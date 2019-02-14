@@ -5,9 +5,11 @@ one:
   name: name1
   price: 1
   imageUrl: imageUrl1
+  description: description1
 
 two:
   id: 2
   name: name2
   price: 2
   imageUrl: imageUrl2
+  description: description1
