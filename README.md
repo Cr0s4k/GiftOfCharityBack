@@ -1,24 +1,18 @@
 # README
+## General Information
+- Ruby version: ruby 2.3.3
+- System dependencies: -
+- Database:
+    - Sqlite3 in development
+    - Pg in production
+    
+## Database initialization:
+    rails db:seed
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Heroku Deployment
+    git push heroku anyBranch:master
+    heroku run rake db:migrate
+    heroku run rake db:seed
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Environtment Variables
+    DB_CONNECTION: Heroku Portgress URL

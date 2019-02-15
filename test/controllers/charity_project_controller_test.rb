@@ -9,7 +9,7 @@ class CharityProjectControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should return charityProjects" do
-    get '/charity_project/getAllCharityProjects'
+    get '/charity_projects'
     js = JSON.parse(response.body)
     expected = [
       {
@@ -26,7 +26,35 @@ class CharityProjectControllerTest < ActionDispatch::IntegrationTest
       }
     ]
     expected = JSON.parse(expected.to_json)
-    assert_same_elements js, expected
+    assert_same_elements expected, js
   end
 
+  test "should get getCharityProjectInformation" do
+    get "/charity_projects/1"
+    assert_response :success
+  end
+
+  test "should return information about a charity project" do
+    get '/charity_projects/1'
+    js = JSON.parse(response.body)
+    expected = {
+        id: 1,
+        name: "name1",
+        price: 1,
+        imageUrl: "imageUrl1",
+        description: "description1"
+    }
+    expected = JSON.parse(expected.to_json)
+    assert_equal expected, js
+  end
+
+  test "should return 404 with an unexistent id" do
+    get '/charity_projects/1000'
+    assert_response 404
+  end
+
+  test "should return 404 with an incorrect id" do
+    get '/charity_projects/abcd'
+    assert_response 404
+  end
 end
