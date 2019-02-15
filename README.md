@@ -1,6 +1,6 @@
 # README
 ## General Information
-- Ruby version: ruby 2.3.3
+- Ruby version: > ruby 2.3.3
 - System dependencies: -
 - Database:
     - Sqlite3 in development
