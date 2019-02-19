@@ -4,7 +4,7 @@ require 'shoulda-context'
 
 class CharityProjectControllerTest < ActionDispatch::IntegrationTest
   test "should get getAllCharityProjects" do
-    get charity_project_getAllCharityProjects_url
+    get '/charity_projects'
     assert_response :success
   end
 
