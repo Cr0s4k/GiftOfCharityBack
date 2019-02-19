@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/Cr0s4k/GiftOfCharityBack.svg?branch=master)](https://travis-ci.com/Cr0s4k/GiftOfCharityBack)
 # README
 ## General Information
 - Ruby version: ruby 2.3.3
