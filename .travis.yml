@@ -1,4 +1,13 @@
 language: ruby
 rvm:
   - 2.4.1
-  - jruby
+env:
+  global:
+    - APP_ENV=production
+    - DB_CONNECTION=postgres://gjyqzljlxqtbdy:23513d05fc4458fb06a9d11d780ca9664ab467956fb89156d34a8313798d92df@ec2-54-247-118-238.eu-west-1.compute.amazonaws.com:5432/d3u6blebdoneop
+before_script:
+  - bundle exec rails db:create
+  - bundle exec rails db:migrate
+  - bundle exec rails db:seed
+script: bundle exec rails test
+services: postgresql
