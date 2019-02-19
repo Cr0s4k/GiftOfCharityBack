@@ -1,13 +1,24 @@
 language: ruby
 rvm:
-  - 2.4.1
+- 2.4.1
 env:
   global:
-    - APP_ENV=production
-    - DB_CONNECTION=postgres://gjyqzljlxqtbdy:23513d05fc4458fb06a9d11d780ca9664ab467956fb89156d34a8313798d92df@ec2-54-247-118-238.eu-west-1.compute.amazonaws.com:5432/d3u6blebdoneop
+  - APP_ENV=production
+  - secure: fBEs36sYwagKGyN01ZY6UOBTgyf/k8LTmvjGYPOeXOaMOp56jZ59azTYmNurC4MJap4WWnAmh0vHawS37/EQ98bgPiKYKm9PWhRPSTpywHm/e68qNwEOYo2r6ftYQGcr4mMbHkvCaAbnFppPNqZkgEZVYUiPf9bf/WSeoJretd2id7eeOxpt3jM+st9Hbbku8J3/7vES4TpQMQDqxs1a/FnemW8ShKzzCg2tsz1Rw1Vef53rj66glMCGuEYSWXLCBjwjI1l2gxEPlAquaFRzfnOVSilf2EOp1Y4HSnNJ1Eg06DNcLLDIqADz74IN2ONJnrLgkeAakyN9iodeOqkcEYhtCE8QB9hqXgq9CCXBWpgRuGEmGbAWcGhEAUWe/ot/CKZiVeU/3rJ4IGrxfsvGia+72Cq2uD61gfUSXFXVI+hu+1a7igGxCxdLnOKKnDAWKMU/FKeTx9FexUz7lv5m9f8Ii6/LLW+9RbK9crUs3BIQW3hjuztnzUYMQ1CYuM6vvQwFsr7DJMrhZFTutQ3Bq9BIwbeT3B6cXfcVKwjQmZAiKeu16Sfh3h6CMdevMwe5LKeFGxUpjrO3mcoB2I8R1bLeRYdgMh6G/gSMK5E1U6ubsELASqUzvZW+q9++yJJUSHmUzUQXY7jPgg+uzHEnTYcy1NOAnbkWsLhnSiRZIY8=
 before_script:
-  - bundle exec rails db:create
-  - bundle exec rails db:migrate
-  - bundle exec rails db:seed
+- bundle exec rails db:create
+- bundle exec rails db:migrate
+- bundle exec rails db:seed
 script: bundle exec rails test
 services: postgresql
+stages:
+- name: deploy
+  if: branch = master
+deploy:
+  provider: heroku
+  api_key:
+    secure: O8hAg7oWH+CycImZ9BzOowERPQ54a7Wh7zL7m5k98SjNq4Lu2D+n/DVLng9XcjJHi68gkDFHi6q1WJGl8AZ+KSUCnWbu64GPFHKd2C6fhl7JXFxrFbpPbHiXJXxBq/RLQ7M4H0WcSN2ix2JrUtU8Z801+lgTHTx3gcv+F16TDyUioxRp5J1+/zGo1RV7zSAKy2rKtPXx3VWt45YUIPG5mtI1W9VDCQEkL3FYn1t2hxqnlTimlwox+GXHMq8k466jsT+soHNw7A1XP7/P7MQTb9y8jxs4jGByQMUVnd2eG5CPLjaNuEOd3MqGk/MrOrCn7FojDGidfJEjCG9tX2ltoSYMDauVU3JTABGa8VbjWYWpJzv/yjUY2TGZrEknbRETUAvkQxWJWsNkcmOoW0G3GHGqHPL3wV5nHniVgSlmNlkfFV4l7X7/qgV1QzJnrYkZFSlskvggDNZLmfrBkz0k9IeFYWr1HEN/CoUN+pCtTNK6+SSUh1hkqUNJlqsHAb+uuvBu4/6XyG7yAEhgqEfYQ/w2SS8eHft6H4rVm1ZB2WDLr5Xz5VaZDERFoerx440Xwl6R1GSWgPWUYhTbiugub9LGK6KLPM99Jlb5wBkrByVDT31Gkt+w7NJMLHwiazXJd02M/Ic3QW+8mlnUX+3W3g8dosOfg2lPzXT3QQoo4bw=
+  app: tfgbackend0
+  run:
+  - rake db:migrate
+  - rake db:seed
