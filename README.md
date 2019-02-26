@@ -16,4 +16,4 @@
     heroku run rake db:seed
 
 ## Environtment Variables
-    DB_CONNECTION: Heroku Portgress URL
+    DB_CONNECTION: Heroku Portgress URL 
