@@ -11,15 +11,13 @@ class DonationsController < ApplicationController
     environtment = PayPal::SandboxEnvironment.new(client_id, client_secret)
     request = OrdersGetRequest::new(order_id)
 
-    begin
-      response = PayPal::PayPalHttpClient.new(environtment).execute(request)
-      amount = response[:result]["purchase_units"][0]["amount"]["value"]
-      if amount.to_f != params[:amount].to_f
-        raise "Different amounts"
-      end
-      render json: {}, status: 200
-    rescue
-      render json: {}, status: 400
+    response = PayPal::PayPalHttpClient.new(environtment).execute(request)
+    amount = response[:result]["purchase_units"][0]["amount"]["value"]
+    if amount.to_f != params[:amount].to_f
+      raise Exception "Different amounts"
     end
+    render status: 200
+  rescue
+    render json: {}, status: 400
   end
 end
