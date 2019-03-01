@@ -2,22 +2,34 @@ require 'paypal-checkout-sdk'
 include PayPalCheckoutSdk::Orders
 
 class DonationsController < ApplicationController
-  def verify_order
-    p params
-    order_id = params[:orderId]
-
-    client_id = 'ATlmGDAnnY0o4-9pXPaMQDitSgsXY_O5U5VnZ4tZkijURbwSKJmM6YWG_5Znyk6Bs41BN1SaJu7NNVJ0'
-    client_secret = 'EDy5PHFLpsjcPm7xVC-RdeWdNs05k7oFeiIIYLmKxCbJ6XNx075qmI9yQE4q1Tcp10fAfh50Xa53Y1h1'
-    environtment = PayPal::SandboxEnvironment.new(client_id, client_secret)
-    request = OrdersGetRequest::new(order_id)
-
-    response = PayPal::PayPalHttpClient.new(environtment).execute(request)
-    amount = response[:result]["purchase_units"][0]["amount"]["value"]
-    if amount.to_f != params[:amount].to_f
-      raise Exception "Different amounts"
+  def make_donation
+    order_id = donation_params
+    begin
+      verify_order(order_id)
+    rescue Exception
+      render json:{message: 'Error paying'}, status: :payment_required
+      return
     end
-    render status: 200
-  rescue
-    render json: {}, status: 400
+    render json:{}, status: :ok
+  end
+
+  private
+  def verify_order(order_id)
+    client_id = ENV['PAYPAL_CLIENT_ID']
+    client_secret = ENV['PAYPAL_CLIENT_SECRET']
+    environment = PayPal::SandboxEnvironment.new(client_id, client_secret)
+
+    request = OrdersGetRequest::new(order_id)
+    response = PayPal::PayPalHttpClient.new(environment).execute(request)
+
+    amount = response[:result]["purchase_units"][0]["amount"]["value"]
+
+    if amount.to_f <= 1
+      raise "Invalid payment"
+    end
+  end
+
+  def donation_params
+    params.require(:orderId)
   end
 end

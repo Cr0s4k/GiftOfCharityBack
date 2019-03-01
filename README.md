@@ -17,3 +17,5 @@
 
 ## Environtment Variables
     DB_CONNECTION: Heroku Portgress URL 
+    PAYPAL_CLIENT_ID: Paypal ID
+    PAYPAL_CLIENT_SECRET: Paypal Secret code
