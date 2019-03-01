@@ -24,7 +24,7 @@ class DonationsController < ApplicationController
 
     amount = response[:result]["purchase_units"][0]["amount"]["value"]
 
-    if amount.to_f <= 1
+    if amount.to_f < 1
       raise "Invalid payment"
     end
   end
