@@ -9,6 +9,11 @@ class DonationsControllerTest < ActionDispatch::IntegrationTest
     assert_response 200
   end
 
+  test "shouldn't make a donation without order_id" do
+    post donations_make_donation_url({})
+    assert_response 400
+  end
+
   def make_order(amount)
     client_id = ENV['PAYPAL_CLIENT_ID']
     client_secret = ENV['PAYPAL_CLIENT_SECRET']
