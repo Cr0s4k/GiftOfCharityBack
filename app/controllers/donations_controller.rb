@@ -4,6 +4,9 @@ include PayPalCheckoutSdk::Orders
 class DonationsController < ApplicationController
   def make_donation
     order_id = donation_params['orderId']
+    if donation_params['orderId'].blank?
+      raise ActionController::ParameterMissing.new("orderId")
+    end
     begin
       verify_order(order_id)
       video = Video.create(url: donation_params['videoUrl'])
@@ -27,11 +30,10 @@ class DonationsController < ApplicationController
           gift: gift,
           charity_project_id: donation_params['itemId']
       )
-
       render json: donation, status: :ok
+
     rescue Exception => e
       render json: {message: e.to_s}, status: :payment_required
-      return
     end
   end
 
