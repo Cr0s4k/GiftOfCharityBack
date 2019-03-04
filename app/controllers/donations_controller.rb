@@ -3,39 +3,40 @@ include PayPalCheckoutSdk::Orders
 
 class DonationsController < ApplicationController
   def make_donation
-    order_id = donation_params
+    order_id = donation_params['orderId']
     begin
       verify_order(order_id)
-      video = Video.create(url: "asda")
-      receiver = Receiver.create({
-                                     address: "asd",
-                                     country: "asd",
-                                     province: "asd",
-                                     postcode: 213,
-                                     city: "string"
-                                 })
-      gift = Gift.create({
-                             sent: false,
-                             seen: false,
-                             video: video,
-                             receiver: receiver
-                         })
-      donor = Donor.create(email: "Blablabla")
-      donation = Donation.create({
-                                     amount: 10,
-                                     donor: donor,
-                                     gift: gift,
-                                     charity_project_id: 1
-                                 })
+      video = Video.create(url: donation_params['videoUrl'])
+      receiver = Receiver.create(
+          address: donation_params['address'],
+          country: donation_params['country'],
+          province: donation_params['province'],
+          postcode: donation_params['postcode'],
+          city: donation_params['city']
+      )
+      gift = Gift.create(
+          sent: false,
+          seen: false,
+          video: video,
+          receiver: receiver
+      )
+      donor = Donor.create(email: donation_params['email'])
+      donation = Donation.create(
+          amount: donation_params['amount'],
+          donor: donor,
+          gift: gift,
+          charity_project_id: donation_params['itemId']
+      )
 
-      render json:donation, status: :ok
+      render json: donation, status: :ok
     rescue Exception => e
-      render json:{message: e.to_s}, status: :payment_required
+      render json: {message: e.to_s}, status: :payment_required
       return
     end
   end
 
   private
+
   def verify_order(order_id)
     client_id = ENV['PAYPAL_CLIENT_ID']
     client_secret = ENV['PAYPAL_CLIENT_SECRET']
@@ -52,6 +53,6 @@ class DonationsController < ApplicationController
   end
 
   def donation_params
-    params.require(:orderId)
+    params.permit(:orderId, :videoUrl, :address, :city, :country, :province, :postcode, :email, :itemId)
   end
 end
