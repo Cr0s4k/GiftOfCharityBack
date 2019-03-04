@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190301153400) do
+ActiveRecord::Schema.define(version: 20190304144414) do
 
   create_table "charity_projects", force: :cascade do |t|
     t.string "name"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20190301153400) do
     t.integer "receiver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "token"
     t.index ["receiver_id"], name: "index_gifts_on_receiver_id"
     t.index ["video_id"], name: "index_gifts_on_video_id"
   end
