@@ -17,14 +17,14 @@ class DonationsController < ApplicationController
       gift = Gift.create({
                              sent: false,
                              seen: false,
-                             video_id: video.id,
-                             receiver_id: receiver.id
+                             video: video,
+                             receiver: receiver
                          })
       donor = Donor.create(email: "Blablabla")
       donation = Donation.create({
                                      amount: 10,
-                                     donor_id: donor.id,
-                                     gift_id: gift.id,
+                                     donor: donor,
+                                     gift: gift,
                                      charity_project_id: 1
                                  })
 

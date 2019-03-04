@@ -1,3 +1,4 @@
 class Gift < ApplicationRecord
-  belongs_to :donation
+  belongs_to :receiver
+  belongs_to :video
 end
