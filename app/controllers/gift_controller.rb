@@ -8,6 +8,9 @@ class GiftController < ApplicationController
     if gift.nil?
       raise ActionController::BadRequest.new("There is no gift with that Id!")
     end
-    render json: gift, status: :ok
+
+    render json: {
+        videoUrl: gift.video.url
+    }, status: :ok
   end
 end
