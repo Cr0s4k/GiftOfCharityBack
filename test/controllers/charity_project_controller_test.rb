@@ -3,12 +3,12 @@ require 'json'
 require 'shoulda-context'
 
 class CharityProjectControllerTest < ActionDispatch::IntegrationTest
-  test "should get getAllCharityProjects" do
-    get charity_project_getAllCharityProjects_url
+  test "should get get_all_charity_projects" do
+    get '/charity_projects'
     assert_response :success
   end
 
-  test "should return charityProjects" do
+  test "should return charity projects" do
     get '/charity_projects'
     js = JSON.parse(response.body)
     expected = [
@@ -29,7 +29,7 @@ class CharityProjectControllerTest < ActionDispatch::IntegrationTest
     assert_same_elements expected, js
   end
 
-  test "should get getCharityProjectInformation" do
+  test "should get get_charity_project" do
     get "/charity_projects/1"
     assert_response :success
   end

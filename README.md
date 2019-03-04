@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/Cr0s4k/GiftOfCharityBack.svg?branch=master)](https://travis-ci.com/Cr0s4k/GiftOfCharityBack)
 # README
 ## General Information
 - Ruby version: > ruby 2.3.3
@@ -15,4 +16,6 @@
     heroku run rake db:seed
 
 ## Environtment Variables
-    DB_CONNECTION: Heroku Portgress URL
+    DB_CONNECTION: Heroku Portgress URL 
+    PAYPAL_CLIENT_ID: Paypal ID
+    PAYPAL_CLIENT_SECRET: Paypal Secret code
