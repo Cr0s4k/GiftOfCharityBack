@@ -1,0 +1,24 @@
+language: ruby
+rvm:
+- 2.4.1
+env:
+  global:
+  - APP_ENV=production
+  - DB_CONNECTION=$DB_CONNECTION
+before_script:
+- bundle exec rails db:create
+- bundle exec rails db:migrate
+- bundle exec rails db:seed
+script: bundle exec rails test
+services: postgresql
+stages:
+- name: deploy
+  if: branch = master
+deploy:
+  provider: heroku
+  api_key:
+    secure: Kobo4wNZ0zVZlKF7pNud0oQ8ACsmeKMj+kkcX7POh82Qw2psQWeOIgyWsQS9m8eSoB0sWvKKlZUie9hOyxppMlKWO21EsNseGoxFKKqiMsJ+3yuAJ2xvb9sW+3bFoP6DhNqI+jJKqdAAraeUiKzOdrWuSeByK71YnH+0+go1uueoWB0DIEDbCSQcubS+aGB6xuGazfCaVBANOsq4Jt7Urj8nre23cCRN7+z3Ze+eENWFReRf8OvD5KDtHRNSCvtZF2qOtUK1O2b29uyY2w0uF09Kp3d2irQS2FI31Mh6us4l2ACjTivGALJeoy58ov06NYhUGR/Md9IiBMwhfDIGDZcSaYzBrb3VhAOwL5BDUUnrcIc/Xsf3EkuUdx+yFhv1cmOdn42ULSrBhHL0tWE2wsOf8sQwpLuukZFz5yBDv6VoSMaXiEieWBwbOLCuTbSJ3xIqe9KiPhRSKyjBPylzlXGqGd3D462a+jLtB5DOECI/VkTOJHIB/7gwIsrWGuR7x5qkL3tLTGZGolfF8Zt4YQP7R3yYBKCBzwRkfEbAc5bXsPYgV0Kg++v6dUmaaxBqNCu7UrQoqC9TypeDC7hIuY1BIabl2UHCiTRFmYnXPnYZSAjRhh9PVoOYsRfV72Fh+Hn3Nam/YWhA8rDvnm1wExdFPAqe71EhcIjnpZcw0Lw=
+  app: tfgbackend0
+  run:
+  - rake db:migrate
+  - rake db:seed
