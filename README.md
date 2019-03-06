@@ -19,6 +19,6 @@
     DB_CONNECTION: Heroku Portgress URL 
     PAYPAL_CLIENT_ID: Paypal ID
     PAYPAL_CLIENT_SECRET: Paypal Secret code
-    CURRENT_URL: E.g.: http://localhost:3000
+    FRONTEND_URL: E.g.: http://localhost:1232
     BITLY_USER: Bitly username
     BITLY_KEY: Bitly key

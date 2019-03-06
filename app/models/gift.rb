@@ -7,7 +7,7 @@ class Gift < ApplicationRecord
     # https://web.archive.org/web/20121026000606/http://blog.logeek.fr/2009/7/2/creating-small-unique-tokens-in-ruby
     self.token = rand(36**8).to_s(36)
 
-    url = "#{ENV['CURRENT_URL']}/gifts/#{self.token}"
+    url = "#{ENV['FRONTEND_URL']}/gift/#{self.token}"
     if Rails.env.production?
       bitly = Bitly.new(ENV['BITLY_USER'], ENV['BITLY_KEY'])
       url = bitly.shorten(url)
