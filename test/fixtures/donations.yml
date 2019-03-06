@@ -2,6 +2,8 @@
 
 one:
   amount: 1
+  donor: one
+  gift: one
 
 two:
   amount: 1

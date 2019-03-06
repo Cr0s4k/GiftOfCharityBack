@@ -22,3 +22,6 @@
     FRONTEND_URL: E.g.: http://localhost:1232
     BITLY_USER: Bitly username
     BITLY_KEY: Bitly key
+    BACKEND_HEROKU_APP: E.g.: tfgbackend0
+    SENDGRID_USERNAME: Sendgrid username
+    SENDGRID_PASSWORD: Sendgrid password
