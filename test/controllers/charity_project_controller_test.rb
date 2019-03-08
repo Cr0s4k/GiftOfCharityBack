@@ -15,13 +15,11 @@ class CharityProjectControllerTest < ActionDispatch::IntegrationTest
       {
         id: 1,
         name: "name1",
-        price: 1,
         imageUrl: "imageUrl1"
       },
       {
         id: 2,
         name: "name2",
-        price: 2,
         imageUrl: "imageUrl2"
       }
     ]
@@ -40,7 +38,6 @@ class CharityProjectControllerTest < ActionDispatch::IntegrationTest
     expected = {
         id: 1,
         name: "name1",
-        price: 1,
         imageUrl: "imageUrl1",
         description: "description1"
     }
