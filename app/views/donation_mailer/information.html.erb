@@ -1,10 +1,246 @@
-<h1>Receive</h1>
-<h2>Thank you for your donation!</h2>
-
-<p>This link will expire in two hours.</p>
-<%= @donation.amount %>
-<%= @donation.donor.email %>
-<p>
-  If you did not request your password to be reset, please ignore this email and
-  your password will stay as it is.
-</p>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td bgcolor="#ffffff" align="center">
+      <!--[if (gte mso 9)|(IE)]>
+      <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+        <tr>
+          <td align="center" valign="top" width="500">
+      <![endif]-->
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px;" class="wrapper">
+        <tr>
+          <td align="center" valign="top" style="padding: 15px 0;" class="logo">
+            <a href="http://tfgfrontend.herokuapp.com" target="_blank">
+              <img alt="Logo" src="<%= image_path('/images/logo.png') %>" width="200" height="200" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+            </a>
+          </td>
+        </tr>
+      </table>
+      <!--[if (gte mso 9)|(IE)]>
+      </td>
+      </tr>
+      </table>
+      <![endif]-->
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#ffffff" align="center" style="padding: 15px;">
+      <!--[if (gte mso 9)|(IE)]>
+      <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+        <tr>
+          <td align="center" valign="top" width="500">
+      <![endif]-->
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px;" class="responsive-table">
+        <tr>
+          <td>
+            <!-- COPY -->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="center" style="font-size: 32px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 0px;" class="padding-copy">Thank you for your donation!
+                </td>
+              </tr>
+              <tr>
+                <td align="left" style="padding: 20px 0 0 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy"><b>Shipping to:</b> <%= @donation.gift.receiver.address %>,
+                  <%= @donation.gift.receiver.city %>, <%= @donation.gift.receiver.province %>, <%= @donation.gift.receiver.country %>
+                  <%= @donation.gift.receiver.postcode %>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <!--[if (gte mso 9)|(IE)]>
+      </td>
+      </tr>
+      </table>
+      <![endif]-->
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#ffffff" align="center" style="padding: 15px;" class="padding">
+      <!--[if (gte mso 9)|(IE)]>
+      <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+        <tr>
+          <td align="center" valign="top" width="500">
+      <![endif]-->
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px;" class="responsive-table">
+        <tr>
+          <td style="padding: 10px 0 0 0; border-top: 1px dashed #aaaaaa;">
+            <!-- TWO COLUMNS -->
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+              <tr>
+                <td valign="top" class="mobile-wrapper">
+                  <!-- LEFT COLUMN -->
+                  <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 47%;" align="left">
+                    <tr>
+                      <td style="padding: 0 0 10px 0;">
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                          <tr>
+                            <td align="left" style="font-family: Arial, sans-serif; color: #333333; font-size: 16px;"><%= @donation.charity_project.name %>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                  <!-- RIGHT COLUMN -->
+                  <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 47%;" align="right">
+                    <tr>
+                      <td style="padding: 0 0 10px 0;">
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                          <tr>
+                            <td align="right" style="font-family: Arial, sans-serif; color: #333333; font-size: 16px;"><%= @donation.amount %>€</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 0 0px 0; border-top: 1px solid #eaeaea; border-bottom: 1px dashed #aaaaaa;">
+            <!-- TWO COLUMNS -->
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+              <tr>
+                <td valign="top" class="mobile-wrapper">
+                  <!-- LEFT COLUMN -->
+                  <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 47%;" align="left">
+                    <tr>
+                      <td style="padding: 0 0 10px 0;">
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                          <tr>
+                            <td align="left" style="font-family: Arial, sans-serif; color: #333333; font-size: 16px; font-weight: bold;">Total</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                  <!-- RIGHT COLUMN -->
+                  <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 47%;" align="right">
+                    <tr>
+                      <td>
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                          <tr>
+                            <td align="right" style="font-family: Arial, sans-serif; color: #7ca230; font-size: 16px; font-weight: bold;"><%= @donation.amount %>€</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <!--[if (gte mso 9)|(IE)]>
+      </td>
+      </tr>
+      </table>
+      <![endif]-->
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#ffffff" align="center" style="padding: 15px;">
+      <!--[if (gte mso 9)|(IE)]>
+      <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+        <tr>
+          <td align="center" valign="top" width="500">
+      <![endif]-->
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px;" class="responsive-table">
+        <tr>
+          <td>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td>
+                  <!-- COPY -->
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td align="left" style="padding: 0 0 0 0; font-size: 14px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color: #aaaaaa; font-style: italic;" class="padding-copy"><%= @donation.created_at%>, with order id: <%= @donation.id %>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <!--[if (gte mso 9)|(IE)]>
+      </td>
+      </tr>
+      </table>
+      <![endif]-->
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#ffffff" align="center" style="padding: 15px;">
+      <table border="0" cellpadding="0" cellspacing="0" width="500" class="responsive-table">
+        <tr>
+          <td>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <!-- COPY -->
+                <td align="center" style="font-size: 32px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 0px;" class="padding-copy">Need help?
+                </td>
+              </tr>
+              <tr>
+                <td align="left" style="padding: 20px 0 0 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">If you have noticed something wrong contact to us by <b>email</b> and we will
+                  be happy to help.
+                </td>
+              </tr>
+              <tr>
+                <td align="center">
+                  <!-- BULLETPROOF BUTTON -->
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td align="center" style="padding-top: 25px;" class="padding">
+                        <table border="0" cellspacing="0" cellpadding="0" class="mobile-button-container">
+                          <tr>
+                            <td align="center" style="border-radius: 3px;" bgcolor="#256F9C">
+                              <a href="http://tfgfrontend0.heroku.com" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; border-radius: 3px; padding: 15px 25px; border: 1px solid #256F9C; display: inline-block;" class="mobile-button">Go to Gift Of Charity</a></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <!--[if (gte mso 9)|(IE)]>
+      </td>
+      </tr>
+      </table>
+      <![endif]-->
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#ffffff" align="center" style="padding: 20px 0px;">
+      <!--[if (gte mso 9)|(IE)]>
+      <table align="center" border="0" cellspacing="0" cellpadding="0" width="500">
+        <tr>
+          <td align="center" valign="top" width="500">
+      <![endif]-->
+      <!-- UNSUBSCRIBE COPY -->
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 500px;" class="responsive-table">
+        <tr>
+          <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
+            Ronda de Sant Pere 67, Barcelona 08003, Spain
+            <br>
+            <a href="http://tfgfrontend0.heroku.com" target="_blank" style="color: #666666; text-decoration: none;">Visit out website</a>
+          </td>
+        </tr>
+      </table>
+      <!--[if (gte mso 9)|(IE)]>
+      </td>
+      </tr>
+      </table>
+      <![endif]-->
+    </td>
+  </tr>
+</table>
