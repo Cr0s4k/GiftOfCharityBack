@@ -1,13 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id: 1
   name: name1
   imageUrl: imageUrl1
   description: description1
 
 two:
-  id: 2
   name: name2
   imageUrl: imageUrl2
   description: description1
