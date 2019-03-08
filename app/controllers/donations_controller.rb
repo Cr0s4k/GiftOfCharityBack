@@ -34,7 +34,7 @@ class DonationsController < ApplicationController
         gift: gift,
         charity_project_id: donation_params['itemId']
     )
-    DonationMailer.information(donation)
+    DonationMailer.information(donation).deliver_now
     render json: donation, status: :ok
   end
 
