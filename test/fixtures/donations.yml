@@ -4,7 +4,7 @@ one:
   amount: 1
   donor: one
   gift: one
-  charity_project: one
+  charity_project_id: 1
 
 two:
   amount: 1
