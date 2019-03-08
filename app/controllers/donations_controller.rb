@@ -58,6 +58,6 @@ class DonationsController < ApplicationController
   end
 
   def donation_params
-    params.permit(:orderId, :videoUrl, :address, :city, :country, :province, :postcode, :email, :itemId)
+    params.permit(:orderId, :videoUrl, :address, :city, :country, :province, :postcode, :email, :itemId, :amount)
   end
 end
