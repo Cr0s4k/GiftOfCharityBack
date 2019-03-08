@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   get '/charity_projects', to: 'charity_project#get_all_charity_projects'
   get '/charity_projects/:id', to: 'charity_project#get_charity_project'
 
+  get '/gifts/:token', to: 'gift#get_gift'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

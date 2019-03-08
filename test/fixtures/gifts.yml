@@ -3,6 +3,8 @@
 one:
   sent: false
   seen: false
+  video: one
+  receiver: one
 
 two:
   sent: false
