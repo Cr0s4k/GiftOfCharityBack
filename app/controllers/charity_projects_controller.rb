@@ -1,4 +1,4 @@
-class CharityProjectsController < ApplicationController
+class CharityProjectsController < ApiController
   def get_all_charity_projects
     charity_projects = CharityProject.all.map do |charity_project|
       {

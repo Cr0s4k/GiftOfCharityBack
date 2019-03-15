@@ -1,3 +1,2 @@
-class ApplicationController < ActionController::API
-  include ErrorHandler
+class ApplicationController < ActionController::BASE
 end
