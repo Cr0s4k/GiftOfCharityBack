@@ -1,4 +1,4 @@
-class GiftController < ApplicationController
+class GiftsController < ApplicationController
   def get_gift
     token = params[:token]
     if token.nil?
