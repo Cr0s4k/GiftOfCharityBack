@@ -6,7 +6,7 @@ class DonationMailerTest < ActionMailer::TestCase
     mail = DonationMailer.information(donation)
     assert_equal "Donation Information", mail.subject
     assert_equal [donation.donor.email], mail.to
-    assert_equal ["noreply@tfgbackend0.herokuapp.com"], mail.from
+    assert_equal ["admin@#{ENV['BACKEND_HEROKU_APP']}.herokuapp.com"], mail.from
     assert_match donation.amount.to_s, mail.body.encoded
     assert_match donation.donor.email, mail.body.encoded
   end
