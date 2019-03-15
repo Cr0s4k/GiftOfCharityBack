@@ -34,9 +34,7 @@ class DonationsController < ApplicationController
         gift: gift,
         charity_project_id: donation_params['itemId']
     )
-    if Rails.env.production?
-      DonationMailer.information(donation).deliver_now
-    end
+    DonationMailer.information(donation).deliver_now
     render json: donation, status: :ok
   end
 

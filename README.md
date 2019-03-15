@@ -25,3 +25,5 @@
     BACKEND_HEROKU_APP: E.g.: tfgbackend0
     SENDGRID_USERNAME: Sendgrid username
     SENDGRID_PASSWORD: Sendgrid password
+    MAILTRAP_USERNAME: Mailtrap username
+    MAILTRAP_PASSWORD: Mailtrap password

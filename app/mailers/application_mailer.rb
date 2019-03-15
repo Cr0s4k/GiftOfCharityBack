@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'noreply@tfgbackend0.herokuapp.com'
+  default from: "admin@#{ENV['BACKEND_HEROKU_APP']}.herokuapp.com"
   layout 'mailer'
 end
