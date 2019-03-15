@@ -1,6 +1,7 @@
 class Gift < ApplicationRecord
   belongs_to :receiver
   belongs_to :video
+  has_one :donation
 
   before_create do
     # We create a short random unique token
@@ -11,9 +12,9 @@ class Gift < ApplicationRecord
     if Rails.env.production?
       bitly = Bitly.new(ENV['BITLY_USER'], ENV['BITLY_KEY'])
       url = bitly.shorten(url)
-      self.secretUrl = url.short_url
+      self.secret_url = url.short_url
     else
-      self.secretUrl = url
+      self.secret_url = url
     end
   end
 end

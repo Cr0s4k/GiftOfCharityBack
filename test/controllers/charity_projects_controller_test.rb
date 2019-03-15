@@ -2,7 +2,7 @@ require 'test_helper'
 require 'json'
 require 'shoulda-context'
 
-class CharityProjectControllerTest < ActionDispatch::IntegrationTest
+class CharityProjectsControllerTest < ActionDispatch::IntegrationTest
   test "should get get_all_charity_projects" do
     get '/charity_projects'
     assert_response :success

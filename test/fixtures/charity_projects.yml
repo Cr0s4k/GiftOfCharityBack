@@ -3,11 +3,11 @@
 one:
   id: 1
   name: name1
-  imageUrl: imageUrl1
+  image_url: imageUrl1
   description: description1
 
 two:
   id: 2
   name: name2
-  imageUrl: imageUrl2
+  image_url: imageUrl2
   description: description1

@@ -5,7 +5,19 @@ include PayPalCheckoutSdk::Orders
 class DonationsControllerTest < ActionDispatch::IntegrationTest
   test "should make a donation" do
     order_id = make_order(5)
-    post donations_make_donation_url({orderId: order_id, itemId: CharityProject.first.id})
+    post donations_make_donation_url(
+       orderId: order_id,
+       itemId: CharityProject.first.id,
+       videoUrl: 'http://somevideo.com',
+       address: 'TestAddress',
+       city: 'Barcelona',
+       country: 'Spain',
+       province: 'Barcelona',
+       postcode: '08202',
+       email: 'test@test.com',
+       amount: '5',
+       donorName: 'Donor'
+     )
     assert_response 200
   end
 
