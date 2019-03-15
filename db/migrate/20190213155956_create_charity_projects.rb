@@ -4,7 +4,6 @@ class CreateCharityProjects < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :image_url
       t.string :description
-      t.belongs_to :donation, index:true
 
       t.timestamps
     end

@@ -10,7 +10,10 @@ class GiftsController < ApplicationController
     end
 
     render json: {
-        videoUrl: gift.video.url
+        videoUrl: gift.video.url,
+        donorName: gift.donation.donor.name,
+        amount: gift.donation.amount,
+        charityProject: gift.donation.charity_project
     }, status: :ok
   end
 end

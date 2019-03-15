@@ -16,10 +16,8 @@ ActiveRecord::Schema.define(version: 20190301153400) do
     t.string "name"
     t.string "image_url"
     t.string "description"
-    t.integer "donation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["donation_id"], name: "index_charity_projects_on_donation_id"
   end
 
   create_table "donations", force: :cascade do |t|
