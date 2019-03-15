@@ -10,16 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190304144414) do
+ActiveRecord::Schema.define(version: 20190315135500) do
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string "namespace"
+    t.text "body"
+    t.string "resource_type"
+    t.integer "resource_id"
+    t.string "author_type"
+    t.integer "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  end
 
   create_table "charity_projects", force: :cascade do |t|
     t.string "name"
-    t.string "imageUrl"
-    t.integer "donation_id"
+    t.string "image_url"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "description"
-    t.index ["donation_id"], name: "index_charity_projects_on_donation_id"
   end
 
   create_table "donations", force: :cascade do |t|
@@ -36,7 +48,7 @@ ActiveRecord::Schema.define(version: 20190304144414) do
 
   create_table "donors", force: :cascade do |t|
     t.string "email"
-    t.string "string"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,12 +56,12 @@ ActiveRecord::Schema.define(version: 20190304144414) do
   create_table "gifts", force: :cascade do |t|
     t.boolean "sent"
     t.boolean "seen"
+    t.string "token"
+    t.string "secret_url"
     t.integer "video_id"
     t.integer "receiver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "token"
-    t.string "secretUrl"
     t.index ["receiver_id"], name: "index_gifts_on_receiver_id"
     t.index ["video_id"], name: "index_gifts_on_video_id"
   end

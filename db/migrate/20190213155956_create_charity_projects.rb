@@ -2,8 +2,8 @@ class CreateCharityProjects < ActiveRecord::Migration[5.1]
   def change
     create_table :charity_projects do |t|
       t.string :name
-      t.string :imageUrl
-      t.belongs_to :donation, index:true
+      t.string :image_url
+      t.string :description
 
       t.timestamps
     end
