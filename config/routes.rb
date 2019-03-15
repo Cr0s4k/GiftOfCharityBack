@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   post '/donations/make_donation', to: 'donations#make_donation'
 
   get '/charity_projects', to: 'charity_projects#get_all_charity_projects'
