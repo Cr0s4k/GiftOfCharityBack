@@ -1,1 +1,13 @@
-Hehe
+Thank you for your donation!
+
+Shipping to: <%= @donation.gift.receiver.address %>, <%= @donation.gift.receiver.city %>, <%= @donation.gift.receiver.province %>, <%= @donation.gift.receiver.country %> <%= @donation.gift.receiver.postcode %>
+
+----------------------------------------------------------------------------
+<%= @donation.charity_project.name %> -> <%= @donation.amount %>€
+----------------------------------------------------------------------------
+Total -> <%= @donation.amount %>€
+----------------------------------------------------------------------------
+
+If you have noticed something wrong contact to us by email and we will be
+happy to help.
+
