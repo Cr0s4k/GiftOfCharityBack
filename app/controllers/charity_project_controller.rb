@@ -4,7 +4,7 @@ class CharityProjectController < ApplicationController
       {
           id: charity_project.id,
           name: charity_project.name,
-          imageUrl: charity_project.imageUrl
+          imageUrl: charity_project.image_url
       }
     end
     render json: charity_projects, status: 200
@@ -15,7 +15,7 @@ class CharityProjectController < ApplicationController
     render json: {
         id: charity_project.id,
         name: charity_project.name,
-        imageUrl: charity_project.imageUrl,
+        imageUrl: charity_project.image_url,
         description: charity_project.description
     }, status: :ok
   end

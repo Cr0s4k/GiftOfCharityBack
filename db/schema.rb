@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 20190304144414) do
 
   create_table "charity_projects", force: :cascade do |t|
     t.string "name"
-    t.string "imageUrl"
+    t.string "image_url"
     t.integer "donation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20190304144414) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "token"
-    t.string "secretUrl"
+    t.string "secret_url"
     t.index ["receiver_id"], name: "index_gifts_on_receiver_id"
     t.index ["video_id"], name: "index_gifts_on_video_id"
   end
