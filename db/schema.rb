@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190304144414) do
+ActiveRecord::Schema.define(version: 20190301153400) do
 
   create_table "charity_projects", force: :cascade do |t|
     t.string "name"
     t.string "image_url"
+    t.string "description"
     t.integer "donation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "description"
     t.index ["donation_id"], name: "index_charity_projects_on_donation_id"
   end
 
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20190304144414) do
 
   create_table "donors", force: :cascade do |t|
     t.string "email"
-    t.string "string"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,12 +44,12 @@ ActiveRecord::Schema.define(version: 20190304144414) do
   create_table "gifts", force: :cascade do |t|
     t.boolean "sent"
     t.boolean "seen"
+    t.string "token"
+    t.string "secret_url"
     t.integer "video_id"
     t.integer "receiver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "token"
-    t.string "secret_url"
     t.index ["receiver_id"], name: "index_gifts_on_receiver_id"
     t.index ["video_id"], name: "index_gifts_on_video_id"
   end

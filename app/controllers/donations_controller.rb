@@ -27,7 +27,10 @@ class DonationsController < ApplicationController
         video: video,
         receiver: receiver
     )
-    donor = Donor.create(email: donation_params['email'])
+    donor = Donor.create(
+        email: donation_params['email'],
+        name: donation_params['donorName']
+    )
     donation = Donation.create(
         amount: donation_params['amount'],
         donor: donor,
@@ -56,6 +59,15 @@ class DonationsController < ApplicationController
   end
 
   def donation_params
-    params.permit(:orderId, :videoUrl, :address, :city, :country, :province, :postcode, :email, :itemId, :amount)
+    params.permit(:orderId,
+                  :videoUrl,
+                  :address,
+                  :city, :country,
+                  :province,
+                  :postcode,
+                  :email,
+                  :itemId,
+                  :amount,
+                  :donorName)
   end
 end

@@ -15,7 +15,8 @@ class DonationsControllerTest < ActionDispatch::IntegrationTest
        province: 'Barcelona',
        postcode: '08202',
        email: 'test@test.com',
-       amount: '5'
+       amount: '5',
+       donorName: 'Donor'
      )
     assert_response 200
   end
