@@ -17,11 +17,16 @@ class DonationMailerPreview < ActionMailer::Preview
         receiver: receiver
     )
     donor = Donor.create(email: 'omarcruz11@hotmail.com')
+    charity_project = CharityProject.create(
+        name: 'charity test',
+        image_url: 'http://image.com',
+        description: 'Description'
+    )
     donation = Donation.create(
         amount: 10000,
         donor: donor,
         gift: gift,
-        charity_project_id: 1
+        charity_project: charity_project
     )
     DonationMailer.information(donation)
   end
