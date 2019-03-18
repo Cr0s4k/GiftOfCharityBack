@@ -11,15 +11,15 @@ ActiveAdmin.register CharityProject do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+#
   index do
     id_column
     column :name
+    column "Image" do |product|
+      link_to image_tag product.image_url, class: 'charityProjectsImage'
+    end
+    column :image_url
+    column :description
     actions
   end
-
-  index as: :grid do |product|
-    link_to image_tag(product.image_url), admin_charity_project_path(product)
-  end
-
-
 end
