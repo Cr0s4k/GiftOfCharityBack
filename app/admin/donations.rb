@@ -26,7 +26,17 @@ ActiveAdmin.register Donation do
   filter :amount
   filter :donor
   filter :charity_project
-  filter :gift
+  filter :gift, as: :select, collection: Gift.all.map{|r| r.id}
   filter :created_at
   filter :updated_at
+
+  form do |f|
+    f.inputs do
+      f.input :amount
+      f.input :donor
+      f.input :charity_project
+      f.input :gift, as: :select, collection: Gift.all.map{|r| r.id}
+    end
+    f.actions
+  end
 end
