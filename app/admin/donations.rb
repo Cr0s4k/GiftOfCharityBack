@@ -1,4 +1,4 @@
-ActiveAdmin.register CharityProject do
+ActiveAdmin.register Donation do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -11,16 +11,20 @@ ActiveAdmin.register CharityProject do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-#
+
   index do
-    selectable_column
     id_column
-    column :name
-    column "Image" do |product|
-      link_to(image_tag(product.image_url, class: 'charityProjectsImage'), admin_charity_project_path(product))
+    column 'Donor email' do |donation|
+      donation.donor.email
     end
-    column :image_url
-    column :description
+    column 'Amount (€)', &:amount
+    column :charity_project
+    column :created_at
     actions
   end
+
+  filter :charity_project
+  filter :donor
+  filter :amount
+  filter :created_at
 end

@@ -9,13 +9,13 @@ ActiveAdmin.register_page "Dashboard" do
     #     small I18n.t("active_admin.dashboard_welcome.call_to_action")
     #   end
     # end
-    
+
     columns do
       column do
         panel "Recent Donations" do
           ul do
-            CharityProject.last(5).map do |post|
-              li link_to(post.name, admin_charity_project_path(post))
+            Donation.last(5).map do |donation|
+              li link_to(donation.id, admin_donations_path(donation))
             end
           end
         end
