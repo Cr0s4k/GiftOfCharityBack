@@ -16,7 +16,7 @@ ActiveAdmin.register CharityProject do
     id_column
     column :name
     column "Image" do |product|
-      link_to image_tag product.image_url, class: 'charityProjectsImage'
+      link_to(image_tag(product.image_url, class: 'charityProjectsImage'), admin_charity_project_path(product))
     end
     column :image_url
     column :description
