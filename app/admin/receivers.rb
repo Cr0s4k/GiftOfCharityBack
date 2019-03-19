@@ -11,19 +11,6 @@ ActiveAdmin.register Receiver do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-# 
-#   index do
-#     selectable_column
-#     id_column
-#     column :address
-#     column :country
-#     column :province
-#     column :postcode
-#     column :city
-#     column :created_at
-#     column :
-#     actions
-#   end
 
   form do |f|
     f.inputs do

@@ -75,12 +75,11 @@ ActiveRecord::Schema.define(version: 20190318155503) do
     t.boolean "seen"
     t.string "token"
     t.string "secret_url"
-    t.integer "video_id"
+    t.string "video_url"
     t.integer "receiver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["receiver_id"], name: "index_gifts_on_receiver_id"
-    t.index ["video_id"], name: "index_gifts_on_video_id"
   end
 
   create_table "receivers", force: :cascade do |t|
@@ -89,12 +88,6 @@ ActiveRecord::Schema.define(version: 20190318155503) do
     t.string "province"
     t.integer "postcode"
     t.string "city"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "videos", force: :cascade do |t|
-    t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

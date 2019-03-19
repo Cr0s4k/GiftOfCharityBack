@@ -13,8 +13,8 @@ ActiveAdmin.register AdminUser do
 
   filter :email
   filter :last_sign_in_at
+  filter :last_sign_in_ip
   filter :sign_in_count
-  filter :created_at
 
   form do |f|
     f.inputs do

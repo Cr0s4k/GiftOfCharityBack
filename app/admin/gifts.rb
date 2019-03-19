@@ -12,4 +12,24 @@ ActiveAdmin.register Gift do
 #   permitted
 # end
 
+  filter :sent
+  filter :seen
+  filter :token
+  filter :secret_url
+  filter :video_url
+  filter :receiver, as: :select, collection: proc {Receiver.all.map{|r| r.id}}
+  filter :created_at
+  filter :updated_at
+
+  form do |f|
+    f.inputs do
+      f.input :sent
+      f.input :seen
+      f.input :token
+      f.input :secret_url
+      f.input :video_url
+      f.input :receiver, as: :select, collection: proc {Receiver.all.map{|r| r.id}}
+    end
+    f.actions
+  end
 end

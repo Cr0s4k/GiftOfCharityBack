@@ -21,6 +21,8 @@ ActiveAdmin.register CharityProject do
     end
     column :image_url
     column :description
+    column :created_at
+    column :updated_at
     actions
   end
 end

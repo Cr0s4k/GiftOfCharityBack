@@ -14,17 +14,19 @@ ActiveAdmin.register Donation do
 
   index do
     id_column
-    column 'Donor email' do |donation|
-      donation.donor.email
-    end
     column 'Amount (€)', &:amount
+    column :donor
     column :charity_project
+    column :gift
     column :created_at
+    column :updated_at
     actions
   end
 
-  filter :charity_project
-  filter :donor
   filter :amount
+  filter :donor
+  filter :charity_project
+  filter :gift
   filter :created_at
+  filter :updated_at
 end
