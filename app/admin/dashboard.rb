@@ -13,9 +13,29 @@ ActiveAdmin.register_page "Dashboard" do
     columns do
       column do
         panel "Recent Donations" do
-          ul do
-            Donation.last(5).map do |donation|
-              li link_to(donation.id, admin_donations_path(donation))
+          table do
+            thead do
+              tr do
+                ['Id', 'Donor Email', 'Charity Project', 'Amount (€)'].each &method(:th)
+              end
+            end
+            tbody do
+              Donation.last(10).map do |donation|
+                tr do
+                  td do
+                    link_to donation.id, admin_donation_path(donation)
+                  end
+                  td do
+                    link_to donation.donor.email, admin_donor_path(donation.donor)
+                  end
+                  td do
+                    link_to donation.charity_project.name, admin_charity_project_path(donation.charity_project)
+                  end
+                  td do
+                    donation.amount
+                  end
+                end
+              end
             end
           end
         end
