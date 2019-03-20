@@ -18,7 +18,7 @@ ActiveAdmin.register Gift do
   filter :token
   filter :secret_url
   filter :video_url
-  filter :receiver, as: :select, collection: ->{Receiver.all.map{|r| r.id}}
+  filter :receiver
   filter :created_at
   filter :updated_at
 
@@ -27,7 +27,7 @@ ActiveAdmin.register Gift do
       f.input :sent
       f.input :seen
       f.input :video_url
-      f.input :receiver_id, as: :select, collection: Receiver.all.map{|r| r.id}, selected: Receiver.first.id
+      f.input :receiver, selected: Receiver.first.id
     end
     f.actions
   end

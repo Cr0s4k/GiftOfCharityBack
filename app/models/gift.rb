@@ -16,4 +16,8 @@ class Gift < ApplicationRecord
       self.secret_url = url
     end
   end
+
+  def display_name
+    self.id
+  end
 end

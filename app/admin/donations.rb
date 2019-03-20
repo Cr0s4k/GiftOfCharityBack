@@ -11,6 +11,7 @@ ActiveAdmin.register Donation do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+  permit_params :amount, :donor_id, :charity_project_id, :gift_id
 
   index do
     id_column
@@ -26,16 +27,16 @@ ActiveAdmin.register Donation do
   filter :amount
   filter :donor
   filter :charity_project
-  filter :gift, as: :select, collection: proc{Gift.all.map{|r| r.id}}
+  filter :gift
   filter :created_at
   filter :updated_at
 
   form do |f|
     f.inputs do
       f.input :amount
-      f.input :donor
-      f.input :charity_project
-      f.input :gift, as: :select, collection: Gift.all.map{|r| r.id}
+      f.input :donor, selected: Donor.first.id
+      f.input :charity_project, selected: CharityProject.first.id
+      f.input :gift, selected: Gift.first.id
     end
     f.actions
   end
