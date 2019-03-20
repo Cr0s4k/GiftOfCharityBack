@@ -11,26 +11,23 @@ ActiveAdmin.register Gift do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+  permit_params :sent, :seen, :video_url, :receiver_id
 
   filter :sent
   filter :seen
   filter :token
   filter :secret_url
   filter :video_url
-  filter :receiver, as: :select, collection: proc {Receiver.all.map{|r| r.id}}
+  filter :receiver, as: :select, collection: ->{Receiver.all.map{|r| r.id}}
   filter :created_at
   filter :updated_at
-
-  permit_params :sent, :seen, :token, :secret_url, :video_url, :receiver
 
   form do |f|
     f.inputs do
       f.input :sent
       f.input :seen
-      f.input :token
-      f.input :secret_url
       f.input :video_url
-      f.input :receiver, as: :select, collection: Receiver.all
+      f.input :receiver_id, as: :select, collection: Receiver.all.map{|r| r.id}, selected: Receiver.first.id
     end
     f.actions
   end
