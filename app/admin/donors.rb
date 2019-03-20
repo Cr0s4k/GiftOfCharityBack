@@ -12,4 +12,5 @@ ActiveAdmin.register Donor do
 #   permitted
 # end
 
+  permit_params :email, :name
 end

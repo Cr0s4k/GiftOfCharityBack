@@ -12,12 +12,14 @@ ActiveAdmin.register CharityProject do
 #   permitted
 # end
 #
+  permit_params :name, :image_url, :description
+
   index do
     selectable_column
     id_column
     column :name
     column "Image" do |product|
-      link_to(image_tag(product.image_url, class: 'charityProjectsImage'), admin_charity_project_path(product))
+      link_to(tag(:img, src: product.image_url, class: 'charityProjectsImage'), admin_charity_project_path(product))
     end
     column :image_url
     column :description
@@ -25,4 +27,6 @@ ActiveAdmin.register CharityProject do
     column :updated_at
     actions
   end
+
+
 end

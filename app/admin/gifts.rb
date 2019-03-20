@@ -17,9 +17,11 @@ ActiveAdmin.register Gift do
   filter :token
   filter :secret_url
   filter :video_url
-  filter :receiver, as: :select, collection: Receiver.all.map{|r| r.id}
+  filter :receiver, as: :select, collection: proc {Receiver.all.map{|r| r.id}}
   filter :created_at
   filter :updated_at
+
+  permit_params :sent, :seen, :token, :secret_url, :video_url, :receiver
 
   form do |f|
     f.inputs do
@@ -28,7 +30,7 @@ ActiveAdmin.register Gift do
       f.input :token
       f.input :secret_url
       f.input :video_url
-      f.input :receiver, as: :select, collection: Receiver.all.map{|r| r.id}
+      f.input :receiver, as: :select, collection: Receiver.all
     end
     f.actions
   end

@@ -26,7 +26,7 @@ ActiveAdmin.register Donation do
   filter :amount
   filter :donor
   filter :charity_project
-  filter :gift, as: :select, collection: Gift.all.map{|r| r.id}
+  filter :gift, as: :select, collection: proc{Gift.all.map{|r| r.id}}
   filter :created_at
   filter :updated_at
 

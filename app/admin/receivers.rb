@@ -11,6 +11,7 @@ ActiveAdmin.register Receiver do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+  permit_params :address, :country, :province, :postcode, :city
 
   form do |f|
     f.inputs do
