@@ -14,6 +14,7 @@ ActiveAdmin.register Donation do
   permit_params :amount, :donor_id, :charity_project_id, :gift_id
 
   index do
+    selectable_column
     id_column
     column 'Amount (€)', &:amount
     column :donor

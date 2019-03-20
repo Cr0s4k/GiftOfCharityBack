@@ -31,4 +31,18 @@ ActiveAdmin.register Gift do
     end
     f.actions
   end
+
+  index do
+    selectable_column
+    id_column
+    column :sent
+    column :seen
+    column :token
+    column :secret_url
+    column :video_url
+    column :receiver
+    column :created_at
+    column :updated_at
+    actions
+  end
 end
