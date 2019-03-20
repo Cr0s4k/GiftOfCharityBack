@@ -43,6 +43,21 @@ ActiveAdmin.register Gift do
     column :receiver
     column :created_at
     column :updated_at
-    actions
+    actions defaults: true do |gift|
+      item "Donwload PDF", download_admin_gift_path(gift.id), class: 'member_link'
+      item "Mark as sent", mark_admin_gift_path(gift.id), class: 'member_link' unless gift.sent
+    end
+  end
+
+  member_action :mark, method: :get do
+    Gift.where(id: params[:id]).update(sent: true)
+    redirect_to admin_gifts_path
+  end
+
+  member_action :download, method: :get do
+    # PDF :D
+    # fake_file = get('http://www.agirregabiria.net/g/sylvainaitor/principito.pdf')
+    # send_file fake_file, type: "application/pdf", x_sendfile: true
+    redirect_to admin_gifts_path
   end
 end
