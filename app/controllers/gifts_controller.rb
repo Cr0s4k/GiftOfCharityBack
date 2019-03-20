@@ -10,7 +10,7 @@ class GiftsController < ApiController
     end
 
     render json: {
-        videoUrl: gift.video.url,
+        videoUrl: gift.video_url,
         donorName: gift.donation.donor.name,
         amount: gift.donation.amount,
         charityProject: gift.donation.charity_project

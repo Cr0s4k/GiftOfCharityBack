@@ -2,7 +2,6 @@ require 'active_record/fixtures'
 # Preview all emails at http://localhost:3000/rails/mailers/donation_mailer
 class DonationMailerPreview < ActionMailer::Preview
   def information
-    video = Video.create(url: 'http://google.es')
     receiver = Receiver.create(
         address: 'Calle Quevedo 63',
         country: 'Spain',
@@ -13,7 +12,7 @@ class DonationMailerPreview < ActionMailer::Preview
     gift = Gift.create(
         sent: false,
         seen: false,
-        video: video,
+        video_url: 'http://google.es',
         receiver: receiver
     )
     donor = Donor.create(email: 'omarcruz11@hotmail.com')

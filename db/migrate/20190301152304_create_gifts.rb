@@ -5,8 +5,8 @@ class CreateGifts < ActiveRecord::Migration[5.1]
       t.boolean :seen
       t.string :token
       t.string :secret_url
+      t.string :video_url
 
-      t.references :video
       t.references :receiver
       t.timestamps
     end

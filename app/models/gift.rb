@@ -1,6 +1,5 @@
 class Gift < ApplicationRecord
   belongs_to :receiver
-  belongs_to :video
   has_one :donation
 
   before_create do
@@ -16,5 +15,9 @@ class Gift < ApplicationRecord
     else
       self.secret_url = url
     end
+  end
+
+  def display_name
+    self.id
   end
 end

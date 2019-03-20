@@ -3,7 +3,7 @@
 one:
   sent: false
   seen: false
-  video: one
+  video_url: myString
   receiver: one
 
 two:

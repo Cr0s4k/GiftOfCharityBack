@@ -13,7 +13,6 @@ class DonationsController < ApiController
       render json: {message: e.to_s}, status: :payment_required
       return
     end
-    video = Video.create(url: donation_params['videoUrl'])
     receiver = Receiver.create(
         address: donation_params['address'],
         country: donation_params['country'],
@@ -24,8 +23,8 @@ class DonationsController < ApiController
     gift = Gift.create(
         sent: false,
         seen: false,
-        video: video,
-        receiver: receiver
+        receiver: receiver,
+        video_url: donation_params['videoUrl']
     )
     donor = Donor.create(
         email: donation_params['email'],
