@@ -157,7 +157,7 @@ ActiveAdmin.setup do |config|
 
   # == Setting a Favicon
   #
-  # config.favicon = 'favicon.ico'
+  config.favicon = ActionController::Base.helpers.image_path 'favicon.ico'
 
   # == Meta Tags
   #
@@ -282,7 +282,7 @@ ActiveAdmin.setup do |config|
   # By default, the footer shows the current Active Admin version. You can
   # override the content of the footer here.
   #
-  # config.footer = 'my custom footer text'
+  config.footer = '© 2018 GiftOfCharity'
 
   # == Sorting
   #
