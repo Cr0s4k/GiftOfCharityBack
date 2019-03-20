@@ -15,3 +15,10 @@
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+
+@import "charity_projects";
+
+$skinMainFirstColor: #2b472d !default;
+$skinMainSecondColor: #65a868 !default;
+$skinBorderWindowColor: #e7eee6 !default;
+@import "wigu/active_admin_theme";
