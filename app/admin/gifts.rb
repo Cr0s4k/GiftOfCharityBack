@@ -39,7 +39,9 @@ ActiveAdmin.register Gift do
     column :seen
     column :token
     column :secret_url
-    column :video_url
+    column 'Video Url' do |gift|
+      cutText(gift.video_url, 70)
+    end
     column :receiver
     column :created_at
     column :updated_at

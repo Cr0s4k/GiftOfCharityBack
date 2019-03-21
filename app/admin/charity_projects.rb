@@ -22,7 +22,9 @@ ActiveAdmin.register CharityProject do
       link_to(tag(:img, src: product.image_url, class: 'charityProjectsImage'), admin_charity_project_path(product))
     end
     column :image_url
-    column :description
+    column 'Description' do |product|
+      cutText(product.description, 70)
+    end
     column :created_at
     column :updated_at
     actions
