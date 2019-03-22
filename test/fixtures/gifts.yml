@@ -3,7 +3,9 @@
 one:
   sent: false
   seen: false
-  video_url: myString
+  video_url: http://youtube.com/12345j
+  token: 12345
+  secret_url: http://url.com/12345
   receiver: one
 
 two:
