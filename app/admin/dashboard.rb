@@ -29,7 +29,7 @@ ActiveAdmin.register_page "Dashboard" do
                     link_to donation.donor.email, admin_donor_path(donation.donor)
                   end
                   td do
-                    link_to donation.charity_project.name, admin_charity_project_path(donation.charity_project) if donation.charity_project
+                    link_to donation.charity_project.name, admin_charity_project_path(donation.charity_project)
                   end
                   td do
                     donation.amount

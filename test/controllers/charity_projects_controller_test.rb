@@ -28,12 +28,12 @@ class CharityProjectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get get_charity_project" do
-    get charity_project_path(1)
+    get charity_project_path(charity_projects(:one).id)
     assert_response :success
   end
 
   test "should return information about a charity project" do
-    get charity_project_path(1)
+    get charity_project_path(charity_projects(:one).id)
     js = JSON.parse(response.body)
     expected = {
         id: 1,
@@ -52,6 +52,11 @@ class CharityProjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "should return 404 with an incorrect id" do
     get charity_project_path('abcd')
+    assert_response 404
+  end
+
+  test "should return 404 when finding a no-available charityProject" do
+    get charity_project_path(charity_projects(:no_available).id)
     assert_response 404
   end
 end

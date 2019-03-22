@@ -5,9 +5,17 @@ one:
   name: name1
   image_url: imageUrl1
   description: description1
+  available: true
 
 two:
   id: 2
   name: name2
   image_url: imageUrl2
   description: description1
+
+no_available:
+  id: 3,
+  name: name3
+  image_url: imageUrl3
+  description: description3
+  available: false
