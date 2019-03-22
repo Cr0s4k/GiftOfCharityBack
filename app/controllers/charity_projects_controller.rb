@@ -1,5 +1,5 @@
 class CharityProjectsController < ApiController
-  def get_all_charity_projects
+  def index
     charity_projects = CharityProject.all.map do |charity_project|
       {
           id: charity_project.id,
@@ -10,7 +10,7 @@ class CharityProjectsController < ApiController
     render json: charity_projects, status: 200
   end
 
-  def get_charity_project
+  def show
     charity_project = CharityProject.find(params[:id])
     render json: {
         id: charity_project.id,
