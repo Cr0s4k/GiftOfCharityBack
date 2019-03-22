@@ -12,7 +12,7 @@ ActiveAdmin.register CharityProject do
 #   permitted
 # end
 #
-  permit_params :name, :image_url, :description
+  permit_params :name, :image_url, :description, :available
 
   index do
     selectable_column
