@@ -16,9 +16,9 @@ class DonationMailerPreview < ActionMailer::Preview
         video_url: 'http://google.es',
         receiver: receiver
     )
-    donor = Donor.create(email: 'omarcruz11@hotmail.com')
+    donor = Donor.create(email: 'omarcruz11@hotmail.com', name: 'Omar')
     charity_project = CharityProject.create(
-        name: 'charity test',
+        name: 'Save the ocean',
         image_url: 'http://image.com',
         description: 'Description'
     )

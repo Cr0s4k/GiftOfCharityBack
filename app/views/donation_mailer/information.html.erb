@@ -8,9 +8,10 @@
       <![endif]-->
       <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px;" class="wrapper">
         <tr>
-          <td align="center" valign="top" style="padding: 15px 0;" class="logo">
+          <td align="center" valign="top" style="padding: 15px 0; padding-bottom: 0px" class="logo">
             <a href="http://tfgfrontend0.herokuapp.com" target="_blank">
               <img alt="Logo" src="http://tfgbackend0.herokuapp.com/images/logo.png" width="200" height="200" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+<!--              <p id="goc-title">GIFTOFCHARITY</p>-->
             </a>
           </td>
         </tr>
@@ -35,7 +36,16 @@
             <!-- COPY -->
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
-                <td align="center" style="font-size: 32px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 0px;" class="padding-copy">Thank you for your donation!
+                <td align="center" style="font-size: 32px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 0px;" class="padding-copy">Thank you for your donation <%= @donation.donor.name %>!
+                </td>
+              </tr>
+              <tr>
+                <td align="justify"
+                    class="padding-copy"
+                    style="padding: 20px 0 0 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;">
+                  We are going to send all your money to <b><%= @donation.charity_project.name %></b>!
+                  <b><%=  @donation.gift.receiver.name %></b> will access to a special section in our website
+                  and will be able to see your awesome video!
                 </td>
               </tr>
               <tr>
@@ -199,8 +209,8 @@
                       <td align="center" style="padding-top: 25px;" class="padding">
                         <table border="0" cellspacing="0" cellpadding="0" class="mobile-button-container">
                           <tr>
-                            <td align="center" style="border-radius: 3px;" bgcolor="#256F9C">
-                              <a href="https://tfgfrontend0.herokuapp.com" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; border-radius: 3px; padding: 15px 25px; border: 1px solid #256F9C; display: inline-block;" class="mobile-button">Go to Gift Of Charity</a></td>
+                            <td align="center" style="border-radius: 3px;" bgcolor="#66BB6A">
+                              <a href="https://tfgfrontend0.herokuapp.com" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; border-radius: 3px; padding: 15px 25px; border: 1px solid #66BB6A; display: inline-block;" class="mobile-button">Go to Gift Of Charity</a></td>
                           </tr>
                         </table>
                       </td>
