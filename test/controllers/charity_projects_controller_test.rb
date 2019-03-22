@@ -8,7 +8,7 @@ class CharityProjectsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should return charity projects" do
+  test "should return available charity projects" do
     get charity_projects_path
     js = JSON.parse(response.body)
     expected = [

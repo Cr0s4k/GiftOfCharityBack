@@ -27,7 +27,7 @@ ActiveAdmin.register Gift do
       f.input :sent
       f.input :seen
       f.input :video_url
-      f.input :receiver, selected: Receiver.first.id
+      f.input :receiver
     end
     f.actions
   end
