@@ -1,12 +1,12 @@
 class GiftsController < ApiController
-  def get_gift
+  def index
     token = params[:token]
     if token.nil?
-      raise ActionController::ParameterMissing.new("token")
+      raise ActionController::ParameterMissing.new("token") # Bad_request
     end
     gift = Gift.where(token: token).first
     if gift.nil?
-      raise ActionController::BadRequest.new("There is no gift with that Id!")
+      raise ActionController::BadRequest.new("There is no gift with that Id!") # 400
     end
 
     render json: {

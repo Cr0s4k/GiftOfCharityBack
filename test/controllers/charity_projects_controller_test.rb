@@ -4,12 +4,12 @@ require 'shoulda-context'
 
 class CharityProjectsControllerTest < ActionDispatch::IntegrationTest
   test "should get get_all_charity_projects" do
-    get '/charity_projects'
+    get charity_projects_path
     assert_response :success
   end
 
-  test "should return charity projects" do
-    get '/charity_projects'
+  test "should return available charity projects" do
+    get charity_projects_path
     js = JSON.parse(response.body)
     expected = [
       {
@@ -28,12 +28,12 @@ class CharityProjectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get get_charity_project" do
-    get "/charity_projects/1"
+    get charity_project_path(charity_projects(:one).id)
     assert_response :success
   end
 
   test "should return information about a charity project" do
-    get '/charity_projects/1'
+    get charity_project_path(charity_projects(:one).id)
     js = JSON.parse(response.body)
     expected = {
         id: 1,
@@ -46,12 +46,17 @@ class CharityProjectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should return 404 with an unexistent id" do
-    get '/charity_projects/1000'
+    get charity_project_path(1000)
     assert_response 404
   end
 
   test "should return 404 with an incorrect id" do
-    get '/charity_projects/abcd'
+    get charity_project_path('abcd')
+    assert_response 404
+  end
+
+  test "should return 404 when finding a no-available charityProject" do
+    get charity_project_path(charity_projects(:no_available).id)
     assert_response 404
   end
 end

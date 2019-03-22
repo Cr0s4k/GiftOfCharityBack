@@ -13,4 +13,9 @@ ActiveAdmin.register Donor do
 # end
 
   permit_params :email, :name
+
+  filter :email
+  filter :name
+  filter :created_at
+  filter :updated_at
 end

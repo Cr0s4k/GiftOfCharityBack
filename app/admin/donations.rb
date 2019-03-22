@@ -35,9 +35,9 @@ ActiveAdmin.register Donation do
   form do |f|
     f.inputs do
       f.input :amount
-      f.input :donor, selected: Donor.first.id
-      f.input :charity_project, selected: CharityProject.first.id
-      f.input :gift, selected: Gift.first.id
+      f.input :donor
+      f.input :charity_project
+      f.input :gift
     end
     f.actions
   end

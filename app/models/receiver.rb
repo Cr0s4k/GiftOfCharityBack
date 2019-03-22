@@ -1,5 +1,3 @@
 class Receiver < ApplicationRecord
-  def display_name
-    self.id
-  end
+  has_one :gift, dependent: :restrict_with_error
 end

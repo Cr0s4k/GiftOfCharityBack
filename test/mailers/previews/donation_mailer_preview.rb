@@ -3,6 +3,7 @@ require 'active_record/fixtures'
 class DonationMailerPreview < ActionMailer::Preview
   def information
     receiver = Receiver.create(
+        name: 'Takeshi',
         address: 'Calle Quevedo 63',
         country: 'Spain',
         province: 'Barcelona',

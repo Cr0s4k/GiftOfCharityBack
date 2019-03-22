@@ -14,6 +14,7 @@ class DonationsController < ApiController
       return
     end
     receiver = Receiver.create(
+        name: donation_params['receiverName'],
         address: donation_params['address'],
         country: donation_params['country'],
         province: donation_params['province'],
@@ -67,6 +68,7 @@ class DonationsController < ApiController
                   :email,
                   :itemId,
                   :amount,
-                  :donorName)
+                  :donorName,
+                  :receiverName)
   end
 end
