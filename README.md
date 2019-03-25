@@ -27,3 +27,6 @@
     SENDGRID_PASSWORD: Sendgrid password
     MAILTRAP_USERNAME: Mailtrap username
     MAILTRAP_PASSWORD: Mailtrap password
+    
+## Binaries
+    wkhtmltopdf
