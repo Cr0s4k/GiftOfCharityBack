@@ -1,6 +1,6 @@
 <p style="color: transparent">HACK</p>
 <div style="width: 80%; margin: 0 auto">
-  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 200px">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 170px">
     <tr>
       <td bgcolor="#ffffff" align="center">
         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px;" class="wrapper">
@@ -27,8 +27,8 @@
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding: 20px 0 20px 0; font-size: 22px; font-family: Helvetica, Arial, sans-serif; color: #666666; line-height: 40px; text-align: justify">
-                    We are glad to tell you that your friend <b><%= gift.donation.donor.name %></b> wants to show you a video!
+                  <td style="padding: 20px 0 20px 0; font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #666666; line-height: 40px; text-align: justify">
+                    We are glad to tell you that your friend <b><%= gift.donation ? gift.donation.donor.name: 'MISSINGNAME' %></b> wants to show you a video!
                     But before you watch the video, we want to know your knowledge about the environment with a questionnaire.
                     We'll let you access to a special section in our website so you'll know what's going on:
                   </td>
@@ -52,28 +52,6 @@
         </table>
       </td>
     </tr>
-  <!--  <tr>-->
-  <!--    <td bgcolor="#ffffff" align="center" style="padding: 15px;">-->
-  <!--      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px;" class="responsive-table">-->
-  <!--        <tr>-->
-  <!--          <td>-->
-  <!--            <table width="100%" border="0" cellspacing="0" cellpadding="0">-->
-  <!--              <tr>-->
-  <!--                <td>-->
-  <!--                  <table width="100%" border="0" cellspacing="0" cellpadding="0">-->
-  <!--                    <tr>-->
-  <!--                      <td align="left" style="padding: 0 0 0 0; font-size: 14px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color: #aaaaaa; font-style: italic;" class="padding-copy"><%#= gift.donation.created_at%>, with order id: <%#= gift.donation.id %>-->
-  <!--                      </td>-->
-  <!--                    </tr>-->
-  <!--                  </table>-->
-  <!--                </td>-->
-  <!--              </tr>-->
-  <!--            </table>-->
-  <!--          </td>-->
-  <!--        </tr>-->
-  <!--      </table>-->
-  <!--    </td>-->
-  <!--  </tr>-->
     <tr>
       <td bgcolor="#ffffff" align="center" style="padding: 20px 0px;">
         <!-- UNSUBSCRIBE COPY -->
