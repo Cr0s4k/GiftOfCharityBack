@@ -65,7 +65,7 @@ ActiveAdmin.register Gift do
     pdf = generate_pdf(gift)
     send_file(
       pdf,
-      filename: 'hehe.pdf',
+      filename: "Gift #{gift.id}.pdf",
       type: 'application/pdf'
     )
   end
