@@ -51,15 +51,22 @@ ActiveAdmin.register Gift do
     end
   end
 
+  controller do # In order to use helpers in member_action stuff
+    include ActiveAdmin::GiftsHelper
+  end
+
   member_action :mark, method: :get do
     Gift.where(id: params[:id]).update(sent: true)
     redirect_to admin_gifts_path
   end
 
   member_action :download, method: :get do
-    # PDF :D
-    # fake_file = get('http://www.agirregabiria.net/g/sylvainaitor/principito.pdf')
-    # send_file fake_file, type: "application/pdf", x_sendfile: true
-    redirect_to admin_gifts_path
+    gift = Gift.find(params[:id])
+    pdf = generate_pdf(gift)
+    send_file(
+      pdf,
+      filename: 'hehe.pdf',
+      type: 'application/pdf'
+    )
   end
 end
