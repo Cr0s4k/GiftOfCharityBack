@@ -4,9 +4,6 @@ Rails.application.routes.draw do
 
   post '/donations/make_donation', to: 'donations#make_donation'
 
-  # get '/charity_projects', to: 'charity_projects#get_all_charity_projects'
-  # get '/charity_projects/:id', to: 'charity_projects#get_charity_project'
-
   resources :charity_projects, only: %i(index show)
 
   resources :gifts, only: :index
