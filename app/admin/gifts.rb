@@ -74,4 +74,8 @@ ActiveAdmin.register Gift do
     gift = Gift.find(params[:id])
     render template: "gift_pdf/index", layout: "mailer", locals: { gift: gift }
   end
+
+  action_item :download, only: :show do
+    link_to 'Download PDF', download_admin_gift_path(gift.id)
+  end
 end
