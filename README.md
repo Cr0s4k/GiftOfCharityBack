@@ -29,4 +29,4 @@
     MAILTRAP_PASSWORD: Mailtrap password
     
 ## Binaries
-    wkhtmltopdf
+    wkhtmltopdf 0.12.5
