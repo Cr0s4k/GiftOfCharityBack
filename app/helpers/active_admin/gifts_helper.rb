@@ -8,6 +8,7 @@ module ActiveAdmin::GiftsHelper
 
   private
   def as_html(gift)
-    render template: "gift_pdf/index", layout: "gift_pdf"
+    p gift.donation
+    render template: "gift_pdf/index", layout: "mailer", locals: { gift: gift }
   end
 end

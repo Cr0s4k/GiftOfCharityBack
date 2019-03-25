@@ -1,0 +1,85 @@
+<div class="container" style="background-color: #65a868">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+      <td bgcolor="#ffffff" align="center">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px;" class="wrapper">
+          <tr>
+            <td align="center" valign="top" style="padding: 15px 0; padding-bottom: 0px" class="logo">
+              <a href="http://tfgfrontend0.herokuapp.com" target="_blank">
+                <img alt="Logo" src="http://tfgbackend0.herokuapp.com/images/logo.png" width="200" height="200" style="display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;" border="0">
+                <!--              <p id="goc-title">GIFTOFCHARITY</p>-->
+              </a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffff" align="center" style="padding: 15px;">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px;" class="responsive-table">
+          <tr>
+            <td>
+              <!-- COPY -->
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td align="center" style="font-size: 32px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 0px;" class="padding-copy">Hello <%= gift.donation.donor.name %>!
+                  </td>
+                </tr>
+                <tr>
+                  <td align="justify"
+                      class="padding-copy"
+                      style="padding: 20px 0 0 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;">
+                    We are going to send all your money to <b><%= gift.donation.charity_project.name %></b>!
+                    <b><%=  gift.donation.gift.receiver.name %></b> will access to a special section in our website
+                    and will be able to see your awesome video! We are going to send you an email when your friend
+                    opens the gift.
+                  </td>
+                </tr>
+                <tr>
+                  <td align="left" style="padding: 20px 0 0 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy"><b>Shipping to:</b> <%= gift.donation.gift.receiver.address %>,
+                    <%= gift.donation.gift.receiver.city %>, <%= gift.donation.gift.receiver.province %>, <%= gift.donation.gift.receiver.country %>
+                    <%= gift.donation.gift.receiver.postcode %>.
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  <!--  <tr>-->
+  <!--    <td bgcolor="#ffffff" align="center" style="padding: 15px;">-->
+  <!--      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px;" class="responsive-table">-->
+  <!--        <tr>-->
+  <!--          <td>-->
+  <!--            <table width="100%" border="0" cellspacing="0" cellpadding="0">-->
+  <!--              <tr>-->
+  <!--                <td>-->
+  <!--                  <table width="100%" border="0" cellspacing="0" cellpadding="0">-->
+  <!--                    <tr>-->
+  <!--                      <td align="left" style="padding: 0 0 0 0; font-size: 14px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color: #aaaaaa; font-style: italic;" class="padding-copy"><%#= gift.donation.created_at%>, with order id: <%#= gift.donation.id %>-->
+  <!--                      </td>-->
+  <!--                    </tr>-->
+  <!--                  </table>-->
+  <!--                </td>-->
+  <!--              </tr>-->
+  <!--            </table>-->
+  <!--          </td>-->
+  <!--        </tr>-->
+  <!--      </table>-->
+  <!--    </td>-->
+  <!--  </tr>-->
+    <tr>
+      <td bgcolor="#ffffff" align="center" style="padding: 20px 0px;">
+        <!-- UNSUBSCRIBE COPY -->
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 500px;" class="responsive-table">
+          <tr>
+            <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
+              Ronda de Sant Pere 67, Barcelona 08003, Spain
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
