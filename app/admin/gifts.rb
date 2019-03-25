@@ -69,4 +69,9 @@ ActiveAdmin.register Gift do
       type: 'application/pdf'
     )
   end
+
+  member_action :view_as_html, method: :get do
+    gift = Gift.find(params[:id])
+    render template: "gift_pdf/index", layout: "mailer", locals: { gift: gift }
+  end
 end
