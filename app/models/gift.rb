@@ -1,6 +1,6 @@
 class Gift < ApplicationRecord
   belongs_to :receiver, dependent: :destroy
-  has_one :donation, dependent: :restrict_with_error
+  has_one :donation
   accepts_nested_attributes_for :receiver
 
   before_create do
