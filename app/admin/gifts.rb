@@ -11,7 +11,9 @@ ActiveAdmin.register Gift do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :sent, :seen, :video_url, :receiver_id
+  actions :all, except: [:new, :destroy]
+
+  permit_params :sent, :seen, :video_url
 
   filter :sent
   filter :seen
@@ -27,7 +29,6 @@ ActiveAdmin.register Gift do
       f.input :sent
       f.input :seen
       f.input :video_url
-      f.input :receiver
     end
     f.actions
   end

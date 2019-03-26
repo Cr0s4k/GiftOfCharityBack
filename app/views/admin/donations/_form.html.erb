@@ -1,0 +1,33 @@
+<%= semantic_form_for [:admin, @donation], builder: ActiveAdmin::FormBuilder do |f| %>
+  <%= f.inputs 'Donation Information', :amount %>
+
+  <%= f.inputs 'Charity Project' do  %>
+  <%=   f.input :charity_project %>
+  <% end %>
+
+  <%= f.inputs 'Donor Information', for: [:donor, f.object.donor || Donor.new] do |donor| %>
+    <%= donor.input :name%>
+    <%= donor.input :email%>
+  <% end %>
+
+  <%= f.inputs 'Gift Information', for: [:gift, f.object.gift || Gift.new] do |gift| %>
+    <%= gift.input :sent %>
+    <%= gift.input :seen %>
+    <%= gift.input :video_url %>
+    <%= gift.inputs 'Receiver Information', for: [:receiver, gift.object.receiver || Receiver.new] do |receiver|%>
+      <%= receiver.input :name %>
+      <%= receiver.input :country, as: :string %>
+      <%= receiver.input :province %>
+      <%= receiver.input :postcode %>
+      <%= receiver.input :city %>
+    <% end %>
+  <% end %>
+
+  <%= f.actions %>
+<% end %>
+<script type="text/javascript">
+      var fieldset = document.querySelectorAll('fieldset.inputs')[4];
+      var form = document.querySelector('form');
+      document.querySelectorAll('fieldset.inputs')[4].remove();
+      form.insertBefore(fieldset, form.children[6]);
+</script>
