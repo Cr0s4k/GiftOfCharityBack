@@ -11,8 +11,10 @@ ActiveAdmin.register Donation do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :amount, :donor_id, :charity_project_id, :gift_id
-
+  permit_params :amount, :charity_project_id,
+                donor_attributes: [:id, :name, :email],
+                gift_attributes: [:id, :sent, :seen, :video_url,
+                                  receiver_attributes: [:id, :name, :address, :country, :province, :postcode, :city]]
   index do
     selectable_column
     id_column
@@ -32,13 +34,5 @@ ActiveAdmin.register Donation do
   filter :created_at
   filter :updated_at
 
-  form do |f|
-    f.inputs do
-      f.input :amount
-      f.input :donor
-      f.input :charity_project
-      f.input :gift
-    end
-    f.actions
-  end
+  form partial: 'form'
 end

@@ -1,6 +1,7 @@
 class Gift < ApplicationRecord
   belongs_to :receiver, dependent: :destroy
   has_one :donation, dependent: :restrict_with_error
+  accepts_nested_attributes_for :receiver
 
   before_create do
     # We create a short random unique token
