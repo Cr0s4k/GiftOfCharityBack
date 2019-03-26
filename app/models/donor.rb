@@ -1,3 +1,3 @@
 class Donor < ApplicationRecord
-  has_one :donation, dependent: :restrict_with_error
+  has_one :donation
 end
