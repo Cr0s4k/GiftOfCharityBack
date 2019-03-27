@@ -1,9 +1,9 @@
 Thank you for your donation!
 
-Shipping: <%= @donation.gift.receiver.address %>, <%= @donation.gift.receiver.city %>, <%= @donation.gift.receiver.province %>, <%= @donation.gift.receiver.country %> <%= @donation.gift.receiver.postcode %>
+Shipping: <%= @donation.receiver.address unless @donation.receiver.blank? %>, <%= @donation.receiver.city unless @donation.receiver.blank? %>, <%= @donation.receiver.province unless @donation.receiver.blank? %>, <%= @donation.receiver.country unless @donation.receiver.blank? %> <%= @donation.receiver.postcode unless @donation.receiver.blank? %>
 
 We are going to send all your money to <%= @donation.charity_project.name %>!
-<%=  @donation.gift.receiver.name %> will access to a special section in our website and will be able to see your awesome video!
+<%=  @donation.receiver.name unless @donation.receiver.blank? %> will access to a special section in our website and will be able to see your awesome video!
 We are going to send you an email when your friend opens the gift.
 
 ----------------------------------------------------------------------------
