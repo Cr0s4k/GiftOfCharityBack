@@ -45,7 +45,7 @@ ActiveAdmin.register Gift do
     end
     column :receiver
     column :created_at
-    column :updated_at
+    column :donation
     actions defaults: true do |gift|
       item "Donwload PDF", download_admin_gift_path(gift.id), class: 'member_link'
       item "Mark as sent", mark_admin_gift_path(gift.id), class: 'member_link' unless gift.sent
@@ -78,5 +78,9 @@ ActiveAdmin.register Gift do
 
   action_item :download, only: :show do
     link_to 'Download PDF', download_admin_gift_path(gift.id)
+  end
+
+  sidebar :note, only: :index do
+    'If you need to remove a gift, remove its donation instead.'
   end
 end
