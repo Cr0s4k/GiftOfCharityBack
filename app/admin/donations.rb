@@ -22,17 +22,29 @@ ActiveAdmin.register Donation do
     column :donor
     column :charity_project
     column :gift
+    column :receiver
     column :created_at
     column :updated_at
-    actions
+    # actions
+    actions defaults: false, only: [:edit] do |post|
+      item "View", admin_donation_path(post.id), method: :get, class: 'member_link'
+      item "Edit", edit_admin_donation_path(post.id), method: :get, class: 'member_link'
+      item "Delete", admin_donation_path(post.id), method: :delete, class: 'member_link',
+           data: {confirm: "The donor, gift and receiver associated will also be deleted! Are you sure?"}
+    end
   end
 
   filter :amount
   filter :donor
   filter :charity_project
   filter :gift
+  filter :receiver
   filter :created_at
   filter :updated_at
 
   form partial: 'form'
+
+  sidebar :note, only: :index do
+    'Once you delete a donation, its donor, gift and receiver associated will also be deleted!'
+  end
 end
