@@ -1,3 +1,24 @@
+class NullReceiver
+  def name
+    ''
+  end
+  def address
+    ''
+  end
+  def country
+    ''
+  end
+  def province
+    ''
+  end
+  def postcode
+    ''
+  end
+  def city
+    ''
+  end
+end
+
 class Gift < ApplicationRecord
   belongs_to :receiver, dependent: :destroy
   has_one :donation
@@ -20,5 +41,9 @@ class Gift < ApplicationRecord
 
   def display_name
     self.id
+  end
+
+  def receiver
+    super || NullReceiver.new
   end
 end
