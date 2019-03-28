@@ -42,6 +42,18 @@ ActiveAdmin.register Donation do
   filter :created_at
   filter :updated_at
 
+  show do
+    attributes_table do
+      row :amount
+      row :donor
+      row :receiver
+      row :charity_project
+      row :gift
+      row :created_at
+      row :updated_at
+    end
+  end
+
   form partial: 'form'
 
   sidebar :note, only: :index do
