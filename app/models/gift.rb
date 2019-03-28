@@ -50,7 +50,7 @@ class Gift < ApplicationRecord
   def send?
     if self.sent? and !self.seen
       self.update(seen: true)
-      # send_email
+      GiftMailer.seen_gift_email(self).deliver_now
     end
   end
 end
