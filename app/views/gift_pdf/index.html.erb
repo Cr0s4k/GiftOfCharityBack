@@ -21,13 +21,13 @@
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td class="r-font" align="center" style="font-size: 32px; color: #333333; padding-top: 0px;" class="padding-copy">
-                    Hello <b><%= gift.receiver.name %></b>!
+                    Hello <b><%= gift.get_receiver.name %></b>!
                   </td>
                 </tr>
                 <tr>
                   <td class="padding-copy r-font"
                       style="padding: 20px 0 0 0; font-size: 20px; line-height: 35px; text-align: justify">
-                    We are glad to tell you that your friend <b><%= gift.donation.donor.name %></b> wants to show you a video!
+                    We are glad to tell you that your friend <b><%= gift.donation.get_donor.name %></b> wants to show you a video!
                     But before you watch the video, we want to know your knowledge about the environment with a questionnaire.
                     We'll let you access to a special section in our website so you'll know what's going on:
                   </td>

@@ -5,7 +5,7 @@
   <%=   f.input :charity_project %>
   <% end %>
 
-  <%= f.inputs 'Donor Information', for: [:donor, f.object.donor.is_a?(NullDonor) ? Donor.new : f.object.donor] do |donor| %>
+  <%= f.inputs 'Donor Information', for: [:donor, f.object.donor || Donor.new] do |donor| %>
     <%= donor.input :name%>
     <%= donor.input :email%>
   <% end %>
@@ -14,8 +14,9 @@
     <%= gift.input :sent %>
     <%= gift.input :seen %>
     <%= gift.input :video_url %>
-    <%= gift.inputs 'Receiver Information', for: [:receiver, gift.object.receiver.is_a?(NullReceiver) ? Receiver.new : gift.object.receiver] do |receiver|%>
+    <%= gift.inputs 'Receiver Information', for: [:receiver, gift.object.receiver || Receiver.new] do |receiver|%>
       <%= receiver.input :name %>
+      <%= receiver.input :address %>
       <%= receiver.input :country, as: :string %>
       <%= receiver.input :province %>
       <%= receiver.input :postcode %>

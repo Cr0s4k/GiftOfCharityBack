@@ -11,7 +11,7 @@ class GiftsController < ApiController
 
     render json: {
         videoUrl: gift.video_url,
-        donorName: gift.donation.donor.name,
+        donorName: gift.donation.get_donor.name,
         amount: gift.donation.amount,
         charityProject: gift.donation.charity_project
     }, status: :ok

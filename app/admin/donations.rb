@@ -20,9 +20,9 @@ ActiveAdmin.register Donation do
     id_column
     column 'Amount (€)', &:amount
     column :donor
+    column :receiver
     column :charity_project
     column :gift
-    column :receiver
     column :created_at
     column :updated_at
     # actions
@@ -36,9 +36,9 @@ ActiveAdmin.register Donation do
 
   filter :amount
   filter :donor
+  filter :receiver
   filter :charity_project
   filter :gift
-  filter :receiver
   filter :created_at
   filter :updated_at
 

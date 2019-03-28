@@ -20,7 +20,7 @@ class NullReceiver
 end
 
 class Gift < ApplicationRecord
-  belongs_to :receiver, dependent: :destroy
+  belongs_to :receiver, dependent: :destroy, optional: true
   has_one :donation
   accepts_nested_attributes_for :receiver
 
@@ -43,7 +43,7 @@ class Gift < ApplicationRecord
     self.id
   end
 
-  def receiver
-    super || NullReceiver.new
+  def get_receiver
+    self.receiver || NullReceiver.new
   end
 end

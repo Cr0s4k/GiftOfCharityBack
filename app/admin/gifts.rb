@@ -34,7 +34,7 @@ ActiveAdmin.register Gift do
   end
 
   index do
-    selectable_column
+    # selectable_column
     id_column
     column :sent
     column :seen
@@ -45,6 +45,7 @@ ActiveAdmin.register Gift do
     end
     column :receiver
     column :created_at
+    column :updated_at
     column :donation
     actions defaults: true do |gift|
       item "Donwload PDF", download_admin_gift_path(gift.id), class: 'member_link'
@@ -57,7 +58,7 @@ ActiveAdmin.register Gift do
   end
 
   member_action :mark, method: :get do
-    Gift.where(id: params[:id]).update(sent: true)
+    Gift.find(params[:id]).update(sent: true)
     redirect_to admin_gifts_path
   end
 
