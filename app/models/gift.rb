@@ -1,5 +1,26 @@
+class NullReceiver
+  def name
+    ''
+  end
+  def address
+    ''
+  end
+  def country
+    ''
+  end
+  def province
+    ''
+  end
+  def postcode
+    ''
+  end
+  def city
+    ''
+  end
+end
+
 class Gift < ApplicationRecord
-  belongs_to :receiver, dependent: :destroy
+  belongs_to :receiver, dependent: :destroy, optional: true
   has_one :donation
   accepts_nested_attributes_for :receiver
 
@@ -20,5 +41,9 @@ class Gift < ApplicationRecord
 
   def display_name
     self.id
+  end
+
+  def get_receiver
+    self.receiver || NullReceiver.new
   end
 end

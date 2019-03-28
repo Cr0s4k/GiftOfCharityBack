@@ -12,6 +12,7 @@ ActiveAdmin.register CharityProject do
 #   permitted
 # end
 #
+  menu priority: 3
   permit_params :name, :image_url, :description, :available
 
   index do

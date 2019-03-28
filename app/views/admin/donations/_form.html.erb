@@ -16,6 +16,7 @@
     <%= gift.input :video_url %>
     <%= gift.inputs 'Receiver Information', for: [:receiver, gift.object.receiver || Receiver.new] do |receiver|%>
       <%= receiver.input :name %>
+      <%= receiver.input :address %>
       <%= receiver.input :country, as: :string %>
       <%= receiver.input :province %>
       <%= receiver.input :postcode %>

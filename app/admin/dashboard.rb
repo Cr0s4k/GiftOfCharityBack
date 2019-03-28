@@ -26,7 +26,7 @@ ActiveAdmin.register_page "Dashboard" do
                     link_to donation.id, admin_donation_path(donation)
                   end
                   td do
-                    link_to donation.donor.email, admin_donor_path(donation.donor)
+                    link_to donation.get_donor.email, admin_donor_path(donation.get_donor)
                   end
                   td do
                     link_to donation.charity_project.name, admin_charity_project_path(donation.charity_project)
