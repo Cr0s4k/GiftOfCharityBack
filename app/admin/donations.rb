@@ -11,6 +11,8 @@ ActiveAdmin.register Donation do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+  config.action_items.delete_at(2)
+  batch_action :destroy, false
   permit_params :amount, :charity_project_id,
                 donor_attributes: [:id, :name, :email],
                 gift_attributes: [:id, :sent, :seen, :video_url,
@@ -58,5 +60,16 @@ ActiveAdmin.register Donation do
 
   sidebar :note, only: :index do
     'Once you delete a donation, its donor, gift and receiver associated will also be deleted!'
+  end
+
+  action_item :destroy, only: :show do
+    link_to 'Delete Donation', admin_donation_path(donation.id), method: :delete, data: {confirm: "The donor, gift and receiver associated will also be deleted! Are you sure?"}
+  end
+
+  batch_action :remove, confirm: "Once you delete those donations, theirs donors, gifts and receivers associated will also be deleted!" do |ids|
+    batch_action_collection.find(ids).each do |post|
+      post.destroy
+    end
+    redirect_to collection_path, alert: "Successfully destroyed #{ids.length} donation#{'s' if ids.length > 1}"
   end
 end

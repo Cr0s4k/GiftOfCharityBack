@@ -11,6 +11,7 @@ ActiveAdmin.register Gift do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+#   belongs_to :donation
   actions :all, except: [:new, :destroy]
 
   permit_params :sent, :seen, :video_url
@@ -21,6 +22,7 @@ ActiveAdmin.register Gift do
   filter :secret_url
   filter :video_url
   filter :receiver
+  filter :donation
   filter :created_at
   filter :updated_at
 
@@ -44,9 +46,9 @@ ActiveAdmin.register Gift do
       cutText(gift.video_url, 40)
     end
     column :receiver
+    column :donation
     column :created_at
     column :updated_at
-    column :donation
     actions defaults: true do |gift|
       item "Donwload PDF", download_admin_gift_path(gift.id), class: 'member_link'
       item "Mark as sent", mark_admin_gift_path(gift.id), class: 'member_link' unless gift.sent
@@ -83,5 +85,19 @@ ActiveAdmin.register Gift do
 
   sidebar :note, only: :index do
     'If you need to remove a gift, remove its donation instead.'
+  end
+
+  show do
+    attributes_table do
+      row :sent
+      row :seen
+      row :token
+      row :secret_url
+      row :video_url
+      row :receiver
+      row :donation
+      row :created_at
+      row :updated_at
+    end
   end
 end
