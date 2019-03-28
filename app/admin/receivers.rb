@@ -11,7 +11,8 @@ ActiveAdmin.register Receiver do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  actions :all, except: [:new, :destroy]
+  menu priority: 6
+  actions :all, except: [:new]
 
   permit_params :name, :address, :country, :province, :postcode, :city, tags_attributes: [:id]
 
