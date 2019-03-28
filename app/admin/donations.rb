@@ -11,6 +11,7 @@ ActiveAdmin.register Donation do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+  menu priority: 4
   config.action_items.delete_at(2)
   batch_action :destroy, false
   permit_params :amount, :charity_project_id,

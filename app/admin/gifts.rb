@@ -12,6 +12,7 @@ ActiveAdmin.register Gift do
 #   permitted
 # end
 #   belongs_to :donation
+  menu priority: 5
   actions :all, except: [:new, :destroy]
 
   permit_params :sent, :seen, :video_url

@@ -11,6 +11,7 @@ ActiveAdmin.register Donor do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+  menu priority: 7
   actions :all, except: [:new]
 
   permit_params :email, :name
