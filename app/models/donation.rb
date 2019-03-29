@@ -22,4 +22,8 @@ class Donation < ApplicationRecord
   def get_receiver
     self.receiver || NullReceiver.new
   end
+
+  def after_create
+    DonationMailer.information(self).deliver_now
+  end
 end
