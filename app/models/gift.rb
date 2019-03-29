@@ -46,4 +46,11 @@ class Gift < ApplicationRecord
   def get_receiver
     self.receiver || NullReceiver.new
   end
+
+  def send?
+    if self.sent? and !self.seen
+      self.update(seen: true)
+      GiftMailer.seen_gift_email(self).deliver_later
+    end
+  end
 end

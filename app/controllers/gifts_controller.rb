@@ -4,10 +4,12 @@ class GiftsController < ApiController
     if token.nil?
       raise ActionController::ParameterMissing.new("token") # Bad_request
     end
-    gift = Gift.where(token: token).first
+    gift = Gift.find_by(token: token)
     if gift.nil?
       raise ActionController::BadRequest.new("There is no gift with that Id!") # 400
     end
+
+    gift.send?
 
     render json: {
         videoUrl: gift.video_url,
