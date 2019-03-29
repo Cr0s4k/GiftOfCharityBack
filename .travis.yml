@@ -24,4 +24,3 @@ deploy:
   run:
   - rake db:migrate
   - rake db:seed
-  - bundle exec sidekiq -q default -q mailers -c 2
