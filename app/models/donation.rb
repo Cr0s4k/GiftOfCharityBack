@@ -16,6 +16,8 @@ class Donation < ApplicationRecord
   accepts_nested_attributes_for :donor
   accepts_nested_attributes_for :gift
 
+  after_commit :send_email_to_donor
+
   def get_donor
     self.donor || NullDonor.new
   end
@@ -23,7 +25,7 @@ class Donation < ApplicationRecord
     self.receiver || NullReceiver.new
   end
 
-  def after_create
+  def send_email_to_donor
     DonationMailer.information(self).deliver_now
   end
 end
