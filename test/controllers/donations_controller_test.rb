@@ -3,6 +3,10 @@ require 'paypal-checkout-sdk'
 include PayPalCheckoutSdk::Orders
 
 class DonationsControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    Donation.skip_emails = true
+  end
+
   test "should make a donation" do
     order_id = make_order(5)
     post donations_make_donation_url(

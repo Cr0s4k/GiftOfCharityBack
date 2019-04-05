@@ -8,6 +8,8 @@ class NullDonor
 end
 
 class Donation < ApplicationRecord
+  cattr_accessor :skip_emails
+
   belongs_to :charity_project
   belongs_to :donor, dependent: :destroy, optional: true
   belongs_to :gift, dependent: :destroy
@@ -26,6 +28,6 @@ class Donation < ApplicationRecord
   end
 
   def send_email_to_donor
-    DonationMailer.information(self).deliver_later
+    DonationMailer.information(self).deliver_later unless Donation.skip_emails
   end
 end
