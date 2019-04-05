@@ -4,7 +4,7 @@ include PayPalCheckoutSdk::Orders
 
 class DonationsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    ActiveRecord::Base.skip_emails = true
+    Donation.skip_emails = true
   end
 
   test "should make a donation" do

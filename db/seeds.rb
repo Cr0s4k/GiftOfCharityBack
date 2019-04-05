@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Donation.skip_emails = true
 
 CharityProject.destroy_all
 CharityProject.create [
@@ -29,4 +30,32 @@ CharityProject.create [
     description: "Every BEF Water Restoration Certificate® created represents 1000 gallons of water restored on your behalf. By purchasing BEF WRCs® you are directly contributing to the restoration of recreational and ecological vitality in critical freshwater ecosystems."
   }
 ]
+
+for i in 0..5
+  Donation.create(
+    amount: 5,
+    gift: Gift.create(
+      sent: true,
+      seen: false,
+      video_url: 'asd',
+      receiver: Receiver.create(
+        address: 'asd',
+        country: 'asd',
+        province: 'asd',
+        postcode: 331,
+        city: 'sad',
+        name: 'asdas'
+      )
+    ),
+    donor: Donor.create(
+      email: 'asdsa',
+      name: 'asda'
+    ),
+    charity_project: CharityProject.first
+  )
+end
+
+
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+Donation.skip_emails = false
