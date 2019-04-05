@@ -8,7 +8,6 @@ env:
 before_script:
 - bundle exec rails db:create
 - bundle exec rails db:migrate
-- bundle exec rails db:seed
 script: bundle exec rails test
 services: postgresql
 stages:
@@ -23,4 +22,3 @@ deploy:
     repo: Cr0s4k/GiftOfCharityBack
   run:
   - rake db:migrate
-  - rake db:seed
