@@ -26,6 +26,6 @@ class Donation < ApplicationRecord
   end
 
   def send_email_to_donor
-    DonationMailer.information(self).deliver_later
+    DonationMailer.information(self).deliver_later unless :skip_emails
   end
 end

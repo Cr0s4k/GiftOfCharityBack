@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class GiftsControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    ActiveRecord::Base.skip_emails = true
+  end
+
   test 'should get error on index with no token' do
     get gifts_path
 
