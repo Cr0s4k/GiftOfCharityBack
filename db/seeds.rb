@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Donation.skip_emails = true
+require 'faker'
 
 CharityProject.destroy_all
 CharityProject.create [
@@ -26,36 +26,35 @@ CharityProject.create [
   },
   {
     name: "BEF Water Restoration program",
-    image_url: "http://www.baltana.com/files/wallpapers-8/River-Landscape-HD-Wallpapers-25857.jpg",
+    image_url: "https://www.ncahd.org/portals/static/mtchsd/images/Glacier-National-Park-River-Landscape-Montana-1874264.jpg",
     description: "Every BEF Water Restoration Certificate® created represents 1000 gallons of water restored on your behalf. By purchasing BEF WRCs® you are directly contributing to the restoration of recreational and ecological vitality in critical freshwater ecosystems."
   }
 ]
 
-for i in 0..5
+Donation.skip_emails = true
+for i in 0..100
   Donation.create(
-    amount: 5,
+    amount: Faker::Number.within(1..250),
     gift: Gift.create(
       sent: true,
-      seen: false,
-      video_url: 'asd',
+      seen: Faker::Boolean.boolean,
+      video_url: 'https://firebasestorage.googleapis.com/v0/b/giftofcharity-ab752.appspot.com/o/videos%2FAdolfito%20y%20sus%20hamburguesas...-14JXCTIMTrw.mp4?alt=media&token=343ee308-9e94-45b6-b894-74bcfd277c8c',
       receiver: Receiver.create(
-        address: 'asd',
-        country: 'asd',
-        province: 'asd',
-        postcode: 331,
-        city: 'sad',
-        name: 'asdas'
+        address: Faker::Address.street_address,
+        country: Faker::Address.country,
+        province: Faker::Address.state,
+        postcode: Faker::Address.postcode,
+        city: Faker::Address.city,
+        name: Faker::Name.name
       )
     ),
     donor: Donor.create(
-      email: 'asdsa',
-      name: 'asda'
+      email: Faker::Internet.email,
+      name: Faker::Name.name
     ),
-    charity_project: CharityProject.first
+    charity_project: CharityProject.offset(rand(CharityProject.count)).first
   )
 end
-
+Donation.skip_emails = false
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
-
-Donation.skip_emails = false
