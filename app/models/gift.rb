@@ -20,6 +20,8 @@ class NullReceiver
 end
 
 class Gift < ApplicationRecord
+  cattr_accessor :skip_emails
+
   belongs_to :receiver, dependent: :destroy, optional: true
   has_one :donation
   accepts_nested_attributes_for :receiver
@@ -50,7 +52,7 @@ class Gift < ApplicationRecord
   def send?
     if self.sent? and !self.seen
       self.update(seen: true)
-      GiftMailer.seen_gift_email(self).deliver_later
+      GiftMailer.seen_gift_email(self).deliver_later unless Gift.skip_emails
     end
   end
 end
