@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190322135216) do
+ActiveRecord::Schema.define(version: 20190408094320) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 20190322135216) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "answers", force: :cascade do |t|
+    t.string "text"
+    t.boolean "is_correct"
+    t.integer "question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
   create_table "charity_projects", force: :cascade do |t|
     t.string "name"
     t.string "image_url"
@@ -50,6 +59,8 @@ ActiveRecord::Schema.define(version: 20190322135216) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "available", default: true
+    t.integer "questionnaire_id"
+    t.index ["questionnaire_id"], name: "index_charity_projects_on_questionnaire_id"
   end
 
   create_table "donations", force: :cascade do |t|
@@ -81,6 +92,20 @@ ActiveRecord::Schema.define(version: 20190322135216) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["receiver_id"], name: "index_gifts_on_receiver_id"
+  end
+
+  create_table "questionnaires", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "text"
+    t.integer "questionnaire_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["questionnaire_id"], name: "index_questions_on_questionnaire_id"
   end
 
   create_table "receivers", force: :cascade do |t|
