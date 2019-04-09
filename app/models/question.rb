@@ -1,6 +1,6 @@
 class QuestionValidator < ActiveModel::Validator
   def validate(record)
-    unless record.answers.select{|e| e.is_correct}.count == 1
+    unless record.answers.select(&:is_correct).count == 1
       record.errors[:answers] << 'There must be a correct answer! (Just one)'
     end
   end

@@ -1,4 +1,6 @@
 class GiftsController < ApiController
+  include QuestionnairesHelper
+
   def index
     token = params[:token]
     if token.nil?
@@ -15,7 +17,8 @@ class GiftsController < ApiController
         videoUrl: gift.video_url,
         donorName: gift.donation.get_donor.name,
         amount: gift.donation.amount,
-        charityProject: gift.donation.charity_project
+        charityProject: gift.donation.charity_project,
+        questionnaire: format_questionnaire(gift.donation.charity_project.questionnaire)
     }, status: :ok
   end
 end

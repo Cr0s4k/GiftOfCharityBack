@@ -33,16 +33,15 @@ class CharityProjectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should return information about a charity project" do
+    p charity_projects(:one)
     get charity_project_path(charity_projects(:one).id)
-    js = JSON.parse(response.body)
-    expected = {
-        id: 1,
-        name: "name1",
-        imageUrl: "imageUrl1",
-        description: "description1"
-    }
-    expected = JSON.parse(expected.to_json)
-    assert_equal expected, js
+
+    json = JSON.parse(response.body)
+    assert_not_nil json['id']
+    assert_equal 'name1', json['name']
+    assert_equal 'imageUrl1', json['imageUrl']
+    assert_equal 'description1', json['description']
+    assert_not_nil json['questionnaireId']
   end
 
   test "should return 404 with an unexistent id" do
