@@ -19,7 +19,6 @@ class GiftsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get :ok with a correct token' do
     actual_gift = gifts(:one)
-    p actual_gift.donation.charity_project.questionnaire.questions
     get gifts_path(token: actual_gift.token)
 
     assert_response :ok
