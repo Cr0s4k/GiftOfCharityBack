@@ -6,12 +6,14 @@ one:
   image_url: imageUrl1
   description: description1
   available: true
+  questionnaire: one
 
 two:
   id: 2
   name: name2
   image_url: imageUrl2
   description: description1
+  questionnaire: one
 
 no_available:
   id: 3,
@@ -19,3 +21,4 @@ no_available:
   image_url: imageUrl3
   description: description3
   available: false
+  questionnaire: one
