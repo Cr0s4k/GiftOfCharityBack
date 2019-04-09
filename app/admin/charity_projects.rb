@@ -13,7 +13,7 @@ ActiveAdmin.register CharityProject do
 # end
 #
   menu priority: 3
-  permit_params :name, :image_url, :description, :available
+  permit_params :name, :image_url, :description, :available, :questionnaire_id
 
   index do
     selectable_column
@@ -27,8 +27,9 @@ ActiveAdmin.register CharityProject do
     column 'Description' do |product|
       cutText(product.description, 70)
     end
+    column :questionnaire
     column :created_at
-    column :updated_at
+    # column :updated_at
     actions
   end
 
@@ -36,6 +37,7 @@ ActiveAdmin.register CharityProject do
   filter :available
   filter :image_url
   filter :description
+  filter :questionnaire
   filter :created_at
   filter :updated_at
 end
