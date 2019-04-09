@@ -41,6 +41,6 @@ class GiftsControllerTest < ActionDispatch::IntegrationTest
     assert_includes json['questionnaire']['questions'][0]['answers'], 'ImAnAnswer'
     assert_includes json['questionnaire']['questions'][0]['answers'], 'ImAnotherAnswer'
 
-    assert_not_nil 1, json['questionnaire']['questions'][0]['correct']['index']
+    assert_not_nil json['questionnaire']['questions'][0]['correct']['index']
   end
 end
