@@ -16,7 +16,8 @@ class CharityProjectsController < ApiController
         id: charity_project.id,
         name: charity_project.name,
         imageUrl: charity_project.image_url,
-        description: charity_project.description
+        description: charity_project.description,
+        questionnaireId: charity_project.questionnaire_id
     }, status: :ok
   end
 end

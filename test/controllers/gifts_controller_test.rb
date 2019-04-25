@@ -33,5 +33,13 @@ class GiftsControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'Josep', json['donorName']
     assert_equal 100, json['amount']
     assert_equal 1, json['charityProject']['id']
+
+    # Quiz stuff
+    assert_equal 'Quiz1', json['questionnaire']['title']
+    assert_equal 'AmIAQuestion?', json['questionnaire']['questions'][0]['prompt']
+    assert_includes json['questionnaire']['questions'][0]['answers'], 'ImAnAnswer'
+    assert_includes json['questionnaire']['questions'][0]['answers'], 'ImAnotherAnswer'
+
+    assert_not_nil json['questionnaire']['questions'][0]['correct']['index']
   end
 end
