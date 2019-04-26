@@ -33,4 +33,28 @@ ActiveAdmin.register Questionnaire do
     end
     f.actions
   end
+
+  index do
+    selectable_column
+    id_column
+    column :title
+    column :number_of_questions
+    column :created_at
+    column :updated_at
+    actions
+  end
+
+  show do
+    attributes_table do
+      row :title
+      row :number_of_questions
+      row :created_at
+      row :updated_at
+    end
+  end
+
+  filter :title
+  filter :number_of_questions
+  filter :created_at
+  filter :updated_at
 end
