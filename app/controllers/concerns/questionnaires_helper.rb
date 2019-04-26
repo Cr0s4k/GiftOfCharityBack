@@ -1,6 +1,7 @@
 module QuestionnairesHelper
   # Format for Quick-quiz
   def format_questionnaire(questionnaire)
+    return nil if questionnaire.nil?
     {
         title: questionnaire.title,
         questions: questionnaire.questions.each_with_index.map do |question, i|
