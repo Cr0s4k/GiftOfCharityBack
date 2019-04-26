@@ -4,7 +4,7 @@ class Questionnaire < ApplicationRecord
 
   validates :title, presence: true
   validates_presence_of :questions
-  accepts_nested_attributes_for :questions
+  accepts_nested_attributes_for :questions, allow_destroy: true
 
   def display_name
     self.title
