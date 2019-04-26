@@ -1,5 +1,5 @@
 class Questionnaire < ApplicationRecord
-  has_many :questions
+  has_many :questions, dependent: :destroy
   has_many :charity_projects
 
   validates :title, presence: true
