@@ -13,7 +13,7 @@ ActiveAdmin.register Questionnaire do
 # end
 
   permit_params :title,
-                questions_attributes: [:id, :text, answers_attributes: [:id, :text, :is_correct]]
+                questions_attributes: [:id, :text, :_destroy, answers_attributes: [:id, :text, :is_correct, :_destroy]]
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
@@ -33,4 +33,28 @@ ActiveAdmin.register Questionnaire do
     end
     f.actions
   end
+
+  index do
+    selectable_column
+    id_column
+    column :title
+    column :number_of_questions
+    column :created_at
+    column :updated_at
+    actions
+  end
+
+  show do
+    attributes_table do
+      row :title
+      row :number_of_questions
+      row :created_at
+      row :updated_at
+    end
+  end
+
+  filter :title
+  filter :number_of_questions
+  filter :created_at
+  filter :updated_at
 end
