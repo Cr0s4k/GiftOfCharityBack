@@ -7,7 +7,7 @@ class QuestionValidator < ActiveModel::Validator
 end
 
 class Question < ApplicationRecord
-  belongs_to :questionnaire
+  belongs_to :questionnaire, counter_cache: :number_of_questions
   has_many :answers
 
   validates :text, presence: true
