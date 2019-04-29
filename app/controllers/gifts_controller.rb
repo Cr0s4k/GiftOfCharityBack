@@ -11,7 +11,7 @@ class GiftsController < ApiController
       raise ActionController::BadRequest.new("There is no gift with that token!") # 400
     end
 
-    gift.send?
+    gift.open_and_notify
 
     render json: {
         videoUrl: gift.video_url,
