@@ -8,7 +8,7 @@ class GiftsController < ApiController
     end
     gift = Gift.find_by(token: token)
     if gift.nil?
-      raise ActionController::BadRequest.new("There is no gift with that Id!") # 400
+      raise ActionController::BadRequest.new("There is no gift with that token!") # 400
     end
 
     gift.send?
