@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class DonorTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  # Validations
+  should validate_presence_of(:name)
+  should validate_presence_of(:email)
 end

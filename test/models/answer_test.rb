@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class AnswerTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  # Associations
+  should belong_to(:question)
+
+  # Validations
+  should validate_presence_of(:text)
 end
