@@ -7,12 +7,35 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-CharityProject.destroy_all
+Questionnaire.create [{
+    title: "Rainforest Quiz",
+    questions_attributes: [
+        {
+            text: 'How many species become extinct every day in the world’s tropical rainforests?',
+            answers_attributes: [
+                {
+                    text: "1",
+                    is_correct: false
+                },
+                {
+                    text: "5",
+                    is_correct: false
+                },
+                {
+                    text: "15",
+                    is_correct: true
+                }
+            ]
+        }
+    ]
+}]
+
 CharityProject.create [
   {
     name: "Save rain forest",
     image_url: "https://images.pexels.com/photos/904807/pexels-photo-904807.jpeg?cs=srgb&dl=branches-daylight-environment-904807.jpg&fm=jpg",
-    description: "Using drones and working with government agencies, two indigenous communities in Peru have gone from losing 5% of their land to 0% deforestation. Indigenous communities are protecting the rainforest even as they face pressure and violence from illegal coca growing, drug trafficking and logging."
+    description: "Using drones and working with government agencies, two indigenous communities in Peru have gone from losing 5% of their land to 0% deforestation. Indigenous communities are protecting the rainforest even as they face pressure and violence from illegal coca growing, drug trafficking and logging.",
+    questionnaire: Questionnaire.first
   },
   {
     name: "Save the ocean",
@@ -32,7 +55,7 @@ CharityProject.create [
 ]
 
 Donation.skip_emails = true
-for i in 0..100
+for i in 0..10
   Donation.create(
     amount: Faker::Number.within(1..250),
     gift: Gift.create(
