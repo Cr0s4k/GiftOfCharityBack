@@ -234,6 +234,7 @@ DEPENDENCIES
   bitly
   braintreehttp
   byebug
+  coffee-rails (~> 4.2.2)
   devise
   faker
   paypal-checkout-sdk

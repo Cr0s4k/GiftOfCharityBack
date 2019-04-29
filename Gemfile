@@ -33,6 +33,7 @@ gem 'bitly'
 gem 'activeadmin'
 gem 'devise'
 gem 'active_admin_theme'
+gem 'coffee-rails', '~> 4.2.2'
 
 gem 'pdfkit'
 gem 'render_anywhere'
