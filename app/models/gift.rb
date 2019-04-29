@@ -26,6 +26,12 @@ class Gift < ApplicationRecord
   has_one :donation
   accepts_nested_attributes_for :receiver
 
+  validates :sent, presence: true
+  validates :seen, presence: true
+  validates :token, presence: true
+  validates :secret_url, presence: true
+  validates :video_url, presence: true
+
   before_create do
     # We create a short random unique token
     # https://web.archive.org/web/20121026000606/http://blog.logeek.fr/2009/7/2/creating-small-unique-tokens-in-ruby
