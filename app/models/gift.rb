@@ -26,10 +26,8 @@ class Gift < ApplicationRecord
   has_one :donation
   accepts_nested_attributes_for :receiver
 
-  validates :sent, presence: true
-  validates :seen, presence: true
-  validates :token, presence: true
-  validates :secret_url, presence: true
+  validates :token, presence: true, on: before_create
+  validates :secret_url, presence: true, on: before_create
   validates :video_url, presence: true
 
   before_create do
@@ -55,9 +53,9 @@ class Gift < ApplicationRecord
     self.receiver || NullReceiver.new
   end
 
-  def send?
+  def open_and_notify
     if self.sent? and !self.seen
-      self.update(seen: true)
+      self.update(seen: true, opened_at: Time.now)
       GiftMailer.seen_gift_email(self).deliver_later unless Gift.skip_emails
     end
   end
