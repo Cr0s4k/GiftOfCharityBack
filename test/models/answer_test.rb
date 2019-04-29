@@ -6,5 +6,4 @@ class AnswerTest < ActiveSupport::TestCase
 
   # Validations
   should validate_presence_of(:text)
-  should validate_presence_of(:is_correct)
 end
