@@ -2,7 +2,7 @@ require 'paypal-checkout-sdk'
 include PayPalCheckoutSdk::Orders
 
 class DonationsController < ApiController
-  def make_donation
+  def create
     order_id = donation_params['orderId']
     if donation_params['orderId'].blank?
       raise ActionController::ParameterMissing.new("orderId")

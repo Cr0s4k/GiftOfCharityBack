@@ -24,6 +24,7 @@ ActiveAdmin.register Gift do
   filter :video_url
   filter :receiver
   filter :donation
+  filter :opened_at
   filter :created_at
   filter :updated_at
 
@@ -48,6 +49,7 @@ ActiveAdmin.register Gift do
     end
     column :receiver
     column :donation
+    column :opened_at
     column :created_at
     column :updated_at
     actions defaults: true do |gift|
@@ -97,6 +99,7 @@ ActiveAdmin.register Gift do
       row :video_url
       row :receiver
       row :donation
+      row :opened_at
       row :created_at
       row :updated_at
     end

@@ -33,7 +33,6 @@ class CharityProjectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should return information about a charity project" do
-    p charity_projects(:one)
     get charity_project_path(charity_projects(:one).id)
 
     json = JSON.parse(response.body)

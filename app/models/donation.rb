@@ -20,6 +20,8 @@ class Donation < ApplicationRecord
 
   after_commit :send_email_to_donor
 
+  validates :amount, presence: true
+
   def get_donor
     self.donor || NullDonor.new
   end

@@ -200,6 +200,8 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
     shoulda-context (1.2.2)
+    shoulda-matchers (4.0.1)
+      activesupport (>= 4.2.0)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -245,6 +247,7 @@ DEPENDENCIES
   rails (~> 5.1.3)
   render_anywhere
   shoulda-context (~> 1.2, >= 1.2.2)
+  shoulda-matchers
   sqlite3
   sucker_punch
   tzinfo-data

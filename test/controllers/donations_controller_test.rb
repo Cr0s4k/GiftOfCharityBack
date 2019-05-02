@@ -9,7 +9,7 @@ class DonationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should make a donation" do
     order_id = make_order(5)
-    post donations_make_donation_url(
+    post donations_url(
        orderId: order_id,
        itemId: CharityProject.first.id,
        videoUrl: 'http://somevideo.com',
@@ -26,7 +26,7 @@ class DonationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "shouldn't make a donation without order_id" do
-    post donations_make_donation_url({})
+    post donations_url({})
     assert_response 400
   end
 
