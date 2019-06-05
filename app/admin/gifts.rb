@@ -42,16 +42,16 @@ ActiveAdmin.register Gift do
     id_column
     column :sent
     column :seen
-    column :token
+    # column :token
     column :secret_url
-    column 'Video Url' do |gift|
-      cutText(gift.video_url, 40)
-    end
+    # column 'Video Url' do |gift|
+    #   cutText(gift.video_url, 40)
+    # end
     column :receiver
     column :donation
     column :opened_at
     column :created_at
-    column :updated_at
+    # column :updated_at
     actions defaults: true do |gift|
       item "Donwload PDF", download_admin_gift_path(gift.id), class: 'member_link'
       item "Mark as sent", mark_admin_gift_path(gift.id), class: 'member_link' unless gift.sent
@@ -94,14 +94,14 @@ ActiveAdmin.register Gift do
     attributes_table do
       row :sent
       row :seen
-      row :token
+      # row :token
       row :secret_url
-      row :video_url
+      # row :video_url
       row :receiver
       row :donation
       row :opened_at
       row :created_at
-      row :updated_at
+      # row :updated_at
     end
   end
 end

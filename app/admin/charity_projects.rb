@@ -23,7 +23,7 @@ ActiveAdmin.register CharityProject do
     column "Image" do |product|
       link_to(tag(:img, src: product.image_url, class: 'charityProjectsImage'), admin_charity_project_path(product))
     end
-    column :image_url
+    # column :image_url
     column 'Description' do |product|
       cutText(product.description, 70)
     end
@@ -39,5 +39,5 @@ ActiveAdmin.register CharityProject do
   filter :description
   filter :questionnaire
   filter :created_at
-  filter :updated_at
+  # filter :updated_at
 end

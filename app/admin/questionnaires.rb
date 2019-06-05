@@ -40,7 +40,7 @@ ActiveAdmin.register Questionnaire do
     column :title
     column :number_of_questions
     column :created_at
-    column :updated_at
+    # column :updated_at
     actions
   end
 
@@ -56,5 +56,5 @@ ActiveAdmin.register Questionnaire do
   filter :title
   filter :number_of_questions
   filter :created_at
-  filter :updated_at
+  # filter :updated_at
 end

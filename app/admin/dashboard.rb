@@ -41,7 +41,7 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
       column do
-        panel "Info" do
+        panel "Message" do
           para "Welcome to the administrator panel."
         end
       end

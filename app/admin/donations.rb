@@ -27,7 +27,7 @@ ActiveAdmin.register Donation do
     column :charity_project
     column :gift
     column :created_at
-    column :updated_at
+    # column :updated_at
     # actions
     actions defaults: false, only: [:edit] do |post|
       item "View", admin_donation_path(post.id), method: :get, class: 'member_link'
@@ -43,7 +43,7 @@ ActiveAdmin.register Donation do
   filter :charity_project
   filter :gift
   filter :created_at
-  filter :updated_at
+  # filter :updated_at
 
   show do
     attributes_table do
