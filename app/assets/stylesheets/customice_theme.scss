@@ -11,6 +11,8 @@ body.active_admin {
 }
 
 #wrapper {
+  margin-bottom: 20px;
+
   #title_bar {
     border-bottom: none !important;
     background-color: #455785 !important;
@@ -72,4 +74,8 @@ body.active_admin {
 
 .mark_as_send::after {
   background-image: image_url("mark.svg");
+}
+
+#footer {
+  display: none;
 }
