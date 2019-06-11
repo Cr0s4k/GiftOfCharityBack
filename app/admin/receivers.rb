@@ -1,4 +1,5 @@
 ActiveAdmin.register Receiver do
+  include ActiveAdmin::AjaxFilter
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -26,7 +27,7 @@ ActiveAdmin.register Receiver do
     column :postcode
     column :city
     column :created_at
-    column :updated_at
+    # column :updated_at
     actions
   end
 
@@ -37,7 +38,7 @@ ActiveAdmin.register Receiver do
   filter :postcode
   filter :city
   filter :created_at
-  filter :updated_at
+  # filter :updated_at
 
   form do |f|
     f.inputs do
