@@ -53,8 +53,8 @@ ActiveAdmin.register Gift do
     column :created_at
     # column :updated_at
     actions defaults: true do |gift|
-      item "Donwload PDF", download_admin_gift_path(gift.id), class: 'member_link'
-      item "Mark as sent", mark_admin_gift_path(gift.id), class: 'member_link' unless gift.sent
+      item "", download_admin_gift_path(gift.id), class: 'member_link download_pdf'
+      item "", mark_admin_gift_path(gift.id), class: 'member_link mark_as_send' unless gift.sent
     end
   end
 

@@ -55,3 +55,21 @@ body.active_admin {
     margin-top: 0;
   }
 }
+
+.download_pdf::after, .mark_as_send::after {
+  content: '';
+  height: 24px;
+  width: 24px;
+  display: inline-block;
+  position: relative;
+  top: 7px;
+}
+
+.download_pdf::after {
+  background-image: image_url("file.svg");
+}
+
+
+.mark_as_send::after {
+  background-image: image_url("mark.svg");
+}
