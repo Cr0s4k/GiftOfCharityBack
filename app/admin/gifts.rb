@@ -37,7 +37,7 @@ ActiveAdmin.register Gift do
   }
   filter :opened_at
   filter :created_at
-  filter :updated_at
+  # filter :updated_at
 
   form do |f|
     f.inputs do
