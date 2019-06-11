@@ -1,4 +1,5 @@
 ActiveAdmin.register CharityProject do
+  include ActiveAdmin::AjaxFilter
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -23,7 +24,7 @@ ActiveAdmin.register CharityProject do
     column "Image" do |product|
       link_to(tag(:img, src: product.image_url, class: 'charityProjectsImage'), admin_charity_project_path(product))
     end
-    column :image_url
+    # column :image_url
     column 'Description' do |product|
       cutText(product.description, 70)
     end
@@ -37,7 +38,12 @@ ActiveAdmin.register CharityProject do
   filter :available
   filter :image_url
   filter :description
-  filter :questionnaire
+  filter :questionnaire, as: :ajax_select, data: {
+      url: :filter_admin_questionnaires_path,
+      search_fields: [:name],
+      display_fields: [:name],
+      limit: 5,
+  }
   filter :created_at
-  filter :updated_at
+  # filter :updated_at
 end

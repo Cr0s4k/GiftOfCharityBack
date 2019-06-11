@@ -1,4 +1,5 @@
 ActiveAdmin.register Donation do
+  include ActiveAdmin::AjaxFilter
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -27,7 +28,7 @@ ActiveAdmin.register Donation do
     column :charity_project
     column :gift
     column :created_at
-    column :updated_at
+    # column :updated_at
     # actions
     actions defaults: false, only: [:edit] do |post|
       item "View", admin_donation_path(post.id), method: :get, class: 'member_link'
@@ -38,12 +39,32 @@ ActiveAdmin.register Donation do
   end
 
   filter :amount
-  filter :donor
-  filter :receiver
-  filter :charity_project
-  filter :gift
+  filter :donor, as: :ajax_select, data: {
+      url: :filter_admin_donors_path,
+      search_fields: [:name],
+      display_fields: [:name],
+      limit: 5,
+  }
+  filter :receiver, as: :ajax_select, data: {
+      url: :filter_admin_receivers_path,
+      search_fields: [:name],
+      display_fields: [:name],
+      limit: 5,
+  }
+  filter :charity_project, as: :ajax_select, data: {
+      url: :filter_admin_charity_projects_path,
+      search_fields: [:name],
+      display_fields: [:name],
+      limit: 5,
+  }
+  filter :gift, as: :ajax_select, data: {
+      url: :filter_admin_gifts_path,
+      search_fields: [:id],
+      display_fields: [:id],
+      limit: 5,
+  }
   filter :created_at
-  filter :updated_at
+  # filter :updated_at
 
   show do
     attributes_table do

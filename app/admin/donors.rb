@@ -1,4 +1,5 @@
 ActiveAdmin.register Donor do
+  include ActiveAdmin::AjaxFilter
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -16,8 +17,18 @@ ActiveAdmin.register Donor do
 
   permit_params :email, :name
 
+  index do
+    selectable_column
+    id_column
+    column :email
+    column :name
+    column :created_at
+    # column :updated_at
+    actions
+  end
+
   filter :email
   filter :name
   filter :created_at
-  filter :updated_at
+  # filter :updated_at
 end
