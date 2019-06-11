@@ -38,10 +38,30 @@ ActiveAdmin.register Donation do
   end
 
   filter :amount
-  filter :donor
-  filter :receiver
-  filter :charity_project
-  filter :gift
+  filter :donor, as: :ajax_select, data: {
+      url: :filter_admin_donors_path,
+      search_fields: [:name],
+      display_fields: [:name],
+      limit: 5,
+  }
+  filter :receiver, as: :ajax_select, data: {
+      url: :filter_admin_receivers_path,
+      search_fields: [:name],
+      display_fields: [:name],
+      limit: 5,
+  }
+  filter :charity_project, as: :ajax_select, data: {
+      url: :filter_admin_charity_projects_path,
+      search_fields: [:name],
+      display_fields: [:name],
+      limit: 5,
+  }
+  filter :gift, as: :ajax_select, data: {
+      url: :filter_admin_gifts_path,
+      search_fields: [:id],
+      display_fields: [:id],
+      limit: 5,
+  }
   filter :created_at
   # filter :updated_at
 

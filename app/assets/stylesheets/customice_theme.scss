@@ -83,3 +83,7 @@ body.active_admin {
 #site_title:hover {
   cursor: default;
 }
+
+.ajax_select .selectize-input {
+  width: 100%;
+}

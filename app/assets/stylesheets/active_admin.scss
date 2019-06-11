@@ -23,4 +23,9 @@ $skinMainFirstColor: #455785 !default;
 $skinMainSecondColor: #455785 !default;
 $skinBorderWindowColor: rgba(0,0,0,0) !default;
 @import "wigu/active_admin_theme";
+
+@import "selectize";
+@import "selectize.default";
+@import "activeadmin-ajax_filter";
+
 @import "customice_theme";
