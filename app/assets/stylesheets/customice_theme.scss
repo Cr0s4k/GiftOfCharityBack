@@ -13,6 +13,11 @@ body.active_admin {
 #wrapper {
   margin-bottom: 20px;
 
+  .flashes .flash_notice {
+    background-color: #7383b5;
+    border-bottom: none;
+  }
+
   #title_bar {
     border-bottom: none !important;
     background-color: #455785 !important;
