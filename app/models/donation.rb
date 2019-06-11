@@ -25,8 +25,13 @@ class Donation < ApplicationRecord
   def get_donor
     self.donor || NullDonor.new
   end
+
   def get_receiver
     self.receiver || NullReceiver.new
+  end
+
+  def display_name
+    self.id
   end
 
   def send_email_to_donor

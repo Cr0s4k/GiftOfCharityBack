@@ -40,8 +40,8 @@ ActiveAdmin.register CharityProject do
   filter :description
   filter :questionnaire, as: :ajax_select, data: {
       url: :filter_admin_questionnaires_path,
-      search_fields: [:id],
-      display_fields: [:id],
+      search_fields: [:name],
+      display_fields: [:name],
       limit: 5,
   }
   filter :created_at

@@ -20,11 +20,21 @@ ActiveAdmin.register Gift do
 
   filter :sent
   filter :seen
-  filter :token
+  # filter :token
   filter :secret_url
-  filter :video_url
-  filter :receiver
-  filter :donation
+  # filter :video_url
+  filter :receiver, as: :ajax_select, data: {
+      url: :filter_admin_receivers_path,
+      search_fields: [:name],
+      display_fields: [:name],
+      limit: 5,
+  }
+  filter :donation, as: :ajax_select, data: {
+      url: :filter_admin_donations_path,
+      search_fields: [:id],
+      display_fields: [:id],
+      limit: 5,
+  }
   filter :opened_at
   filter :created_at
   filter :updated_at
