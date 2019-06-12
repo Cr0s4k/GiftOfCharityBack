@@ -1,4 +1,4 @@
-<%= semantic_form_for [:admin, @donation], builder: ActiveAdmin::FormBuilder do |f| %>
+<%= semantic_form_for [:create_donation, :admin, @donation], builder: ActiveAdmin::FormBuilder do |f| %>
   <%= f.semantic_errors *f.object.errors.keys %>
   <%= f.inputs 'Donation Information', :amount %>
 
