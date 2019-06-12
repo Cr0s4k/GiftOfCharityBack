@@ -15,10 +15,8 @@ ActiveAdmin.register Donation do
   menu priority: 4
   config.action_items.delete_at(2)
   batch_action :destroy, false
-  permit_params :amount, :charity_project_id,
-                donor_attributes: [:id, :name, :email],
-                gift_attributes: [:id, :sent, :seen, :video_url,
-                                  receiver_attributes: [:id, :name, :address, :country, :province, :postcode, :city]]
+  permit_params :amount, :charity_project_id
+
   index do
     selectable_column
     id_column
@@ -78,7 +76,7 @@ ActiveAdmin.register Donation do
     end
   end
 
-  # form partial: 'new'
+  form partial: 'edit'
 
   controller do
     def new
