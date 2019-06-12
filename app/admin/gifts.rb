@@ -106,11 +106,14 @@ ActiveAdmin.register Gift do
     attributes_table do
       row :sent
       row :seen
+      row :token
       row :secret_url
+      row :video_url
       row :receiver
       row :donation
       row :opened_at
       row :created_at
+      row :updated_at
     end
   end
 end
