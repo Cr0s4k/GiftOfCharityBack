@@ -17,6 +17,12 @@
     <a style="padding: 10px" href="<%= admin_gift_path(f.object.gift.id) %>">Go to gift information</a>
   <% end %>
 
+  <% if f.object.gift.receiver %>
+    <%= f.inputs 'Reeciver Information', for: [:donor, f.object.donor] do |donor| %>
+      <a style="padding: 10px" href="<%= admin_receiver_path(f.object.gift.receiver.id) %>">Go to receiver information</a>
+    <% end %>
+  <% end %>
+
   <%= f.actions %>
 <% end %>
 <script type="text/javascript">
