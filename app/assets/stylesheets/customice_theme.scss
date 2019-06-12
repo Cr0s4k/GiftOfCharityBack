@@ -92,3 +92,11 @@ body.active_admin {
 .ajax_select .selectize-input {
   width: 100%;
 }
+
+#wrapper #active_admin_content div.table_tools {
+  margin-bottom: 0;
+}
+
+.table_tools .dropdown_menu {
+  margin-bottom: 35px;
+}

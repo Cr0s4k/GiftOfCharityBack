@@ -15,10 +15,8 @@ ActiveAdmin.register Donation do
   menu priority: 4
   config.action_items.delete_at(2)
   batch_action :destroy, false
-  permit_params :amount, :charity_project_id,
-                donor_attributes: [:id, :name, :email],
-                gift_attributes: [:id, :sent, :seen, :video_url,
-                                  receiver_attributes: [:id, :name, :address, :country, :province, :postcode, :city]]
+  permit_params :amount, :charity_project_id
+
   index do
     selectable_column
     id_column
@@ -78,7 +76,45 @@ ActiveAdmin.register Donation do
     end
   end
 
-  form partial: 'form'
+  form partial: 'edit'
+
+  controller do
+    def new
+      @donation = Donation.new
+      render template: "admin/donations/_new", layout: "active_admin"
+    end
+  end
+
+  collection_action :create_donation, method: :post do
+    @donation = Donation.create(
+      amount: params["donation"]['amount'],
+      donor: Donor.create(
+        name: params["donation"]["donor_attributes"]["name"],
+        email: params["donation"]["donor_attributes"]["email"]
+      ),
+      gift: Gift.create(
+        sent: params["donation"]["gift_attributes"]["sent"],
+        seen: params["donation"]["gift_attributes"]["seen"],
+        video_url: params["donation"]["gift_attributes"]["video_url"],
+        receiver: Receiver.create(
+          name: params["donation"]["gift_attributes"]["receiver_attributes"]["name"],
+          address: params["donation"]["gift_attributes"]["receiver_attributes"]["address"],
+          country: params["donation"]["gift_attributes"]["receiver_attributes"]["country"],
+          province: params["donation"]["gift_attributes"]["receiver_attributes"]["province"],
+          postcode: params["donation"]["gift_attributes"]["receiver_attributes"]["postcode"],
+          city: params["donation"]["gift_attributes"]["receiver_attributes"]["city"]
+        )
+      ),
+      charity_project_id: params["donation"]["charity_project_id"]
+    )
+
+    if @donation.save
+      redirect_to admin_donation_path(@donation.id), notice: "Donation was successfully created."
+      return
+    end
+
+    render template: "admin/donations/_new", layout: "active_admin"
+  end
 
   sidebar :note, only: :index do
     'Once you delete a donation, its donor, gift and receiver associated will also be deleted!'
