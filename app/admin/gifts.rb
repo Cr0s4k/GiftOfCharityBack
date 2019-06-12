@@ -39,14 +39,15 @@ ActiveAdmin.register Gift do
   filter :created_at
   # filter :updated_at
 
-  form do |f|
-    f.inputs do
-      f.input :sent
-      f.input :seen
-      f.input :video_url
-    end
-    f.actions
-  end
+  form partial: 'edit'
+# form do |f|
+  #   f.inputs do
+  #     f.input :sent
+  #     f.input :seen
+  #     f.input :video_url
+  #   end
+  #   f.actions
+  # end
 
   index do
     # selectable_column

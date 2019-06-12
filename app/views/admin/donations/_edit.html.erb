@@ -1,33 +1,26 @@
 <%= semantic_form_for [:admin, @donation], builder: ActiveAdmin::FormBuilder do |f| %>
   <%= f.semantic_errors *f.object.errors.keys %>
 
-  <%= f.inputs 'Donation Information', :amount %>
-
-  <%= f.inputs 'Charity Project' do  %>
+  <%= f.inputs 'Donation Information' do %>
+  <%=   f.input :amount %>
   <%=   f.input :charity_project %>
   <% end %>
 
   <% if f.object.donor %>
-    <%= f.inputs 'Donor Information', for: [:donor, f.object.donor] do |donor| %>
+    <%= f.inputs 'Donor Information' do %>
       <a style="padding: 10px" href="<%= admin_donor_path(f.object.donor.id) %>">Go to donor information</a>
     <% end %>
   <% end %>
 
-  <%= f.inputs 'Gift Information', for: [:gift, f.object.gift] do |gift| %>
+  <%= f.inputs 'Gift Information' do %>
     <a style="padding: 10px" href="<%= admin_gift_path(f.object.gift.id) %>">Go to gift information</a>
   <% end %>
 
   <% if f.object.gift.receiver %>
-    <%= f.inputs 'Reeciver Information', for: [:donor, f.object.donor] do |donor| %>
+    <%= f.inputs 'Reeciver Information' do %>
       <a style="padding: 10px" href="<%= admin_receiver_path(f.object.gift.receiver.id) %>">Go to receiver information</a>
     <% end %>
   <% end %>
 
   <%= f.actions %>
 <% end %>
-<script type="text/javascript">
-      var fieldset = document.querySelectorAll('fieldset.inputs')[4];
-      var form = document.querySelector('form');
-      document.querySelectorAll('fieldset.inputs')[4].remove();
-      form.insertBefore(fieldset, form.children[6]);
-</script>
