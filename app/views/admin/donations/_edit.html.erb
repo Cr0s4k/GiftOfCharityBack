@@ -1,0 +1,28 @@
+<%= semantic_form_for [:admin, @donation], builder: ActiveAdmin::FormBuilder do |f| %>
+  <%= f.semantic_errors *f.object.errors.keys %>
+
+  <%= f.inputs 'Donation' do %>
+  <%=   f.input :amount %>
+  <%=   f.input :charity_project %>
+  <% end %>
+
+  <% if f.object.donor %>
+    <%= f.inputs 'Donor' do %>
+      <a style="padding: 10px" href="<%= admin_donor_path(f.object.donor.id) %>">Go to donor <b><%= f.object.donor.name %></b> information</a>
+    <% end %>
+  <% end %>
+
+  <%= f.inputs 'Gift' do %>
+    <a style="padding: 10px" href="<%= admin_gift_path(f.object.gift.id) %>">Go to gift <b><%= f.object.gift.id %></b> information</a>
+  <% end %>
+
+  <% if f.object.gift.receiver %>
+    <%= f.inputs 'Receiver' do %>
+      <a style="padding: 10px" href="<%= admin_receiver_path(f.object.gift.receiver.id) %>">
+        Go to receiver <b><%= f.object.gift.receiver.name %></b> information
+      </a>
+    <% end %>
+  <% end %>
+
+  <%= f.actions %>
+<% end %>

@@ -39,14 +39,15 @@ ActiveAdmin.register Gift do
   filter :created_at
   # filter :updated_at
 
-  form do |f|
-    f.inputs do
-      f.input :sent
-      f.input :seen
-      f.input :video_url
-    end
-    f.actions
-  end
+  form partial: 'edit'
+# form do |f|
+  #   f.inputs do
+  #     f.input :sent
+  #     f.input :seen
+  #     f.input :video_url
+  #   end
+  #   f.actions
+  # end
 
   index do
     # selectable_column
@@ -105,14 +106,11 @@ ActiveAdmin.register Gift do
     attributes_table do
       row :sent
       row :seen
-      # row :token
       row :secret_url
-      # row :video_url
       row :receiver
       row :donation
       row :opened_at
       row :created_at
-      # row :updated_at
     end
   end
 end

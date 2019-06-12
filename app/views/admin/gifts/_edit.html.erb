@@ -1,0 +1,19 @@
+<%= semantic_form_for [:admin, @gift], builder: ActiveAdmin::FormBuilder do |f| %>
+  <%= f.semantic_errors *f.object.errors.keys %>
+
+  <%= f.inputs 'Gift' do  %>
+  <%=   f.input :sent %>
+  <%=   f.input :seen %>
+  <%=   f.input :video_url %>
+  <% end %>
+
+  <% if f.object.receiver %>
+    <%= f.inputs 'Receiver' do %>
+      <a style="padding: 10px" href="<%= admin_receiver_path(f.object.receiver.id) %>">
+        Go to receiver <b><%= f.object.receiver.name %></b> information
+      </a>
+    <% end %>
+  <% end %>
+
+  <%= f.actions %>
+<% end %>
