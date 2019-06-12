@@ -18,7 +18,7 @@ class Donation < ApplicationRecord
   accepts_nested_attributes_for :donor
   accepts_nested_attributes_for :gift
 
-  after_commit :send_email_to_donor
+  after_create_commit :send_email_to_donor
 
   validates :amount, presence: true
 
